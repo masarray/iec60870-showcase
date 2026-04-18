@@ -18,31 +18,23 @@ export function setupHeroAnimations(): void {
   });
 
   if (title) {
-    tl.fromTo(title, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.72 });
+    tl.fromTo(title, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.62 });
   }
 
   if (copy) {
-    tl.fromTo(copy, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.62 }, "-=0.42");
+    tl.fromTo(copy, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.52 }, "-=0.34");
   }
 
   if (actions) {
-    tl.fromTo(actions, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.34");
+    tl.fromTo(actions, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.42 }, "-=0.28");
   }
 
   if (visual) {
     tl.fromTo(
       visual,
-      { opacity: 0, x: 26, scale: 0.985 },
-      { opacity: 1, x: 0, scale: 1, duration: 0.9 },
-      "-=0.62"
+      { opacity: 0, x: 18, scale: 0.992 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.72 },
+      "-=0.46"
     );
-
-    gsap.to(visual, {
-      y: -8,
-      duration: 2.8,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
   }
 }

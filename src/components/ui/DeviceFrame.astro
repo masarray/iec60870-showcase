@@ -13,15 +13,18 @@ const { src, alt } = Astro.props;
 
 <style>
 .device-frame {
-  background: linear-gradient(180deg, rgba(15,36,60,0.95), rgba(10,26,45,0.95));
-  border: 1px solid var(--line-strong);
+  background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(245,250,255,0.92));
+  border: 1px solid rgba(104, 145, 188, 0.18);
   border-radius: 24px;
   padding: 14px;
+  box-shadow:
+    0 20px 50px rgba(32, 74, 121, 0.10),
+    0 8px 18px rgba(20, 53, 91, 0.08);
 }
 
 .device-frame img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
   display: block;
 }
 </style>

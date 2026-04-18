@@ -3,7 +3,7 @@
 }
 
 [data-hover-lift] {
-  will-change: transform;
+  will-change: auto;
 }
 
 .hero-device img {
@@ -12,6 +12,6 @@
 }
 
 .hero-device:hover img {
-  transform: scale(1.01) translateZ(0);
-  transition: transform 0.25s ease;
+  transform: scale(1.003) translateZ(0);
+  transition: transform 0.18s ease;
 }
