@@ -13,7 +13,7 @@ export const heroContent = {
     href: "#product-intro"
   },
   heroImage: {
-    src: "/assets/hero/hero-main.webp",
+    src: "assets/hero/hero-main.webp",
     alt: "IEC 60870 Tester and Analyzer product hero visual"
   }
 };

@@ -25,6 +25,9 @@ const {
   bullets,
   reverse = false
 } = Astro.props;
+
+const assetBase = import.meta.env.BASE_URL;
+const resolvedImageSrc = `${assetBase}${imageSrc}`;
 ---
 
 <section id={id} class="section feature-section">
@@ -37,7 +40,7 @@ const {
       </div>
 
       <div class="feature-visual">
-        <DeviceFrame src={imageSrc} alt={imageAlt} />
+        <DeviceFrame src={resolvedImageSrc} alt={imageAlt} />
       </div>
     </div>
   </div>

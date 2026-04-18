@@ -14,7 +14,9 @@ const {
 
 const keywords = siteConfig.keywords.join(", ");
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-const ogImageUrl = new URL(siteConfig.ogImage, Astro.site);
+const baseUrl = import.meta.env.BASE_URL;
+const ogImageUrl = new URL(`${baseUrl}${siteConfig.ogImage}`, Astro.site);
+const faviconUrl = `${baseUrl}favicon.svg`;
 ---
 
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ const ogImageUrl = new URL(siteConfig.ogImage, Astro.site);
     <meta name="keywords" content={keywords} />
     <meta name="theme-color" content="#f5f9fd" />
     <link rel="canonical" href={canonicalUrl.toString()} />
-    <link rel="icon" href="/favicon.svg" />
+    <link rel="icon" href={faviconUrl} />
 
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />

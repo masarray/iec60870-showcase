@@ -16,5 +16,5 @@ export const siteConfig = {
     "substation engineering",
     "FAT commissioning"
   ],
-  ogImage: "/assets/hero/hero-main.webp"
+  ogImage: "assets/hero/hero-main.webp"
 };
