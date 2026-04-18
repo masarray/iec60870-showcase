@@ -14,7 +14,7 @@ export const siteConfig = {
     "SOE audit",
     "command lifecycle",
     "substation engineering",
-    "FAT commissioning"
+    "FAT commissioning",
   ],
-  ogImage: "assets/hero/hero-main.webp"
+  ogImage: "assets/hero/hero-main.webp",
 };
