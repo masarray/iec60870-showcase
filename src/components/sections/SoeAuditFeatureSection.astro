@@ -1,0 +1,18 @@
+---
+import FeatureSection from "@/components/features/FeatureSection.astro";
+import { featureItems } from "@/content/features";
+
+const item = featureItems.find((x) => x.id === "soe-audit");
+if (!item) throw new Error("Missing feature: soe-audit");
+---
+
+<FeatureSection
+  id={item.id}
+  eyebrow={item.eyebrow}
+  title={item.title}
+  description={item.description}
+  imageSrc={item.imageSrc}
+  imageAlt={item.imageAlt}
+  bullets={item.bullets}
+  reverse={true}
+/>

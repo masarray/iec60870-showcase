@@ -1,0 +1,17 @@
+{
+  "name": "iec60870-showcase",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
+    "astro": "^4.16.18",
+    "gsap": "^3.12.5"
+  }
+}

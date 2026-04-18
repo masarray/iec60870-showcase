@@ -1,0 +1,26 @@
+﻿---
+import Container from "@/components/layout/Container.astro";
+import SectionShell from "@/components/layout/SectionShell.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import { featureItems } from "@/content/features";
+---
+<SectionShell id="features">
+  <Container>
+    <div data-reveal>
+      <SectionTitle
+        title="Core capabilities"
+        text="A focused feature set for troubleshooting, validation, event auditing, and communication diagnostics."
+      />
+
+      <div class="summary-grid" style="margin-top: 28px;">
+        {featureItems.map((item) => (
+          <div class="summary-card" data-hover-lift>
+            <div class="eyebrow" style="margin-bottom: 14px;">{item.eyebrow}</div>
+            <h3 style="margin: 0 0 10px; font-size: 1.2rem;">{item.title}</h3>
+            <p class="section-text">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Container>
+</SectionShell>

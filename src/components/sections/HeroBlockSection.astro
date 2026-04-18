@@ -1,0 +1,48 @@
+---
+import { heroContent } from "@/content/hero";
+import Eyebrow from "@/components/ui/Eyebrow.astro";
+import Button from "@/components/ui/Button.astro";
+import DeviceFrame from "@/components/ui/DeviceFrame.astro";
+---
+
+<section class="section hero-section" data-hero-root>
+  <div class="container hero-container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <Eyebrow text={heroContent.eyebrow} />
+
+        <h1 data-hero-title>{heroContent.title}</h1>
+
+        <p class="hero-tagline" data-hero-copy>
+          {heroContent.tagline}
+        </p>
+
+        <p class="hero-subtext">
+          {heroContent.subtext}
+        </p>
+
+        <div class="actions-row" data-hero-actions>
+          <Button href={heroContent.primaryCta.href} variant="primary">
+            {heroContent.primaryCta.label}
+          </Button>
+
+          <Button href={heroContent.secondaryCta.href} variant="secondary">
+            {heroContent.secondaryCta.label}
+          </Button>
+        </div>
+      </div>
+
+      <div class="hero-visual" data-hero-visual>
+        <div class="hero-glow"></div>
+        <div class="hero-grid-overlay"></div>
+
+        <div class="hero-device">
+          <DeviceFrame
+            src={heroContent.heroImage.src}
+            alt={heroContent.heroImage.alt}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

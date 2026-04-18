@@ -1,0 +1,37 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SiteHeader from "@/components/layout/SiteHeader.astro";
+import SiteFooter from "@/components/layout/SiteFooter.astro";
+import ClientInit from "@/components/layout/ClientInit.astro";
+
+import HeroBlockSection from "@/components/sections/HeroBlockSection.astro";
+import CredibilitySection from "@/components/sections/CredibilitySection.astro";
+import ProductIntroSection from "@/components/sections/ProductIntroSection.astro";
+import TimelineFeatureSection from "@/components/sections/TimelineFeatureSection.astro";
+import RedundancyFeatureSection from "@/components/sections/RedundancyFeatureSection.astro";
+import AvailabilityFeatureSection from "@/components/sections/AvailabilityFeatureSection.astro";
+import SoeAuditFeatureSection from "@/components/sections/SoeAuditFeatureSection.astro";
+import CommandFeatureSection from "@/components/sections/CommandFeatureSection.astro";
+import FeaturesSummarySection from "@/components/sections/FeaturesSummarySection.astro";
+import FinalCtaSection from "@/components/sections/FinalCtaSection.astro";
+---
+
+<BaseLayout>
+  <SiteHeader />
+
+  <main>
+    <HeroBlockSection />
+    <CredibilitySection />
+    <ProductIntroSection />
+    <TimelineFeatureSection />
+    <RedundancyFeatureSection />
+    <AvailabilityFeatureSection />
+    <SoeAuditFeatureSection />
+    <CommandFeatureSection />
+    <FeaturesSummarySection />
+    <FinalCtaSection />
+  </main>
+
+  <SiteFooter />
+  <ClientInit />
+</BaseLayout>

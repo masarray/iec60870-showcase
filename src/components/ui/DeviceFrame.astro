@@ -1,0 +1,27 @@
+---
+export interface Props {
+  src: string;
+  alt: string;
+}
+
+const { src, alt } = Astro.props;
+---
+
+<div class="device-frame">
+  <img src={src} alt={alt} loading="lazy" />
+</div>
+
+<style>
+.device-frame {
+  background: linear-gradient(180deg, rgba(15,36,60,0.95), rgba(10,26,45,0.95));
+  border: 1px solid var(--line-strong);
+  border-radius: 24px;
+  padding: 14px;
+}
+
+.device-frame img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+</style>

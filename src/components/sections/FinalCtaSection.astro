@@ -1,0 +1,26 @@
+﻿---
+import Container from "@/components/layout/Container.astro";
+import SectionShell from "@/components/layout/SectionShell.astro";
+import Button from "@/components/ui/Button.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import { ctaContent } from "@/content/cta";
+---
+<SectionShell id="contact">
+  <Container>
+    <div data-reveal>
+      <SectionTitle
+        title={ctaContent.title}
+        text={ctaContent.description}
+      />
+
+      <div class="actions-row">
+        <Button href={ctaContent.primaryHref} variant="primary">
+          {ctaContent.primaryLabel}
+        </Button>
+        <Button href={ctaContent.secondaryHref} variant="secondary">
+          {ctaContent.secondaryLabel}
+        </Button>
+      </div>
+    </div>
+  </Container>
+</SectionShell>

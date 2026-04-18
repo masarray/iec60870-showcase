@@ -1,0 +1,20 @@
+﻿---
+import Button from "@/components/ui/Button.astro";
+import Eyebrow from "@/components/ui/Eyebrow.astro";
+import { heroContent } from "@/content/hero";
+---
+<div class="hero-copy" data-hero-copy>
+  <Eyebrow text={heroContent.eyebrow} />
+  <h1 data-hero-title>{heroContent.title}</h1>
+  <p class="hero-tagline">{heroContent.tagline}</p>
+  <p class="hero-subtext">{heroContent.subtext}</p>
+
+  <div class="actions-row" data-hero-actions>
+    <Button href={heroContent.primaryCtaHref} variant="primary">
+      {heroContent.primaryCtaLabel}
+    </Button>
+    <Button href={heroContent.secondaryCtaHref} variant="secondary">
+      {heroContent.secondaryCtaLabel}
+    </Button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+---
+import FeatureSection from "@/components/features/FeatureSection.astro";
+import { featureItems } from "@/content/features";
+
+const item = featureItems.find((x) => x.id === "redundancy-analysis");
+if (!item) throw new Error("Missing feature: redundancy-analysis");
+---
+
+<FeatureSection
+  id={item.id}
+  eyebrow={item.eyebrow}
+  title={item.title}
+  description={item.description}
+  imageSrc={item.imageSrc}
+  imageAlt={item.imageAlt}
+  bullets={item.bullets}
+  reverse={true}
+/>

@@ -1,0 +1,6 @@
+﻿---
+const { items = [] } = Astro.props;
+---
+<ul class="feature-bullets">
+  {items.map((item: string) => <li>{item}</li>)}
+</ul>

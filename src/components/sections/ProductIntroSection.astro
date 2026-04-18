@@ -1,0 +1,25 @@
+﻿---
+import Container from "@/components/layout/Container.astro";
+import SectionShell from "@/components/layout/SectionShell.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import DeviceFrame from "@/components/ui/DeviceFrame.astro";
+---
+<SectionShell id="product-intro">
+  <Container>
+    <div class="two-col" data-reveal>
+      <div>
+        <SectionTitle
+          title="Not just a protocol viewer"
+          text="This is a practical analysis tool designed for real-world communication issues — from redundancy behavior to event timing validation and command diagnostics."
+        />
+      </div>
+
+      <div>
+        <DeviceFrame
+          src="/assets/screenshots/dual-link-analyzer.png"
+          alt="IEC 60870 dual-link analyzer overview"
+        />
+      </div>
+    </div>
+  </Container>
+</SectionShell>

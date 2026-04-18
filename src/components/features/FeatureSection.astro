@@ -1,0 +1,44 @@
+---
+import Eyebrow from "@/components/ui/Eyebrow.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import DeviceFrame from "@/components/ui/DeviceFrame.astro";
+import FeatureBullets from "@/components/features/FeatureBullets.astro";
+
+export interface Props {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  bullets: string[];
+  reverse?: boolean;
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+  bullets,
+  reverse = false
+} = Astro.props;
+---
+
+<section id={id} class="section">
+  <div class="container">
+    <div class:list={["feature-row", reverse && "feature-row--reverse"]} data-reveal>
+      <div class="feature-copy">
+        <Eyebrow text={eyebrow} />
+        <SectionTitle title={title} text={description} />
+        <FeatureBullets items={bullets} />
+      </div>
+
+      <div class="feature-visual">
+        <DeviceFrame src={imageSrc} alt={imageAlt} />
+      </div>
+    </div>
+  </div>
+</section>

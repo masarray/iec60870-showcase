@@ -1,0 +1,88 @@
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 0.98fr 1.18fr;
+  gap: 40px;
+  align-items: center;
+  min-height: 82vh;
+}
+
+.hero-copy {
+  max-width: 500px;
+}
+
+.hero-visual {
+  position: relative;
+  transform: scale(1.08);
+  margin-right: -48px;
+  will-change: transform;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: -70px;
+  background: radial-gradient(
+    circle at 60% 50%,
+    rgba(59,179,255,0.14),
+    rgba(0,0,0,0)
+  );
+  filter: blur(36px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.18;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-device {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(0);
+  will-change: transform;
+  box-shadow:
+    0 32px 90px rgba(0,0,0,0.48),
+    0 0 0 1px rgba(255,255,255,0.06);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.hero-device::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.05),
+    inset 0 0 28px rgba(59,179,255,0.05);
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-visual {
+    margin-right: 0;
+    transform: scale(1);
+  }
+}

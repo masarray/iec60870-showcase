@@ -1,0 +1,6 @@
+﻿---
+const { id, className = "", tight = false } = Astro.props;
+---
+<section id={id} class:list={["section", tight && "section-tight", className]}>
+  <slot />
+</section>

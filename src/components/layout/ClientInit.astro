@@ -1,0 +1,43 @@
+<script>
+  import { setupHeroAnimations } from "@/lib/animation/heroAnimations";
+  import { setupRevealAnimations } from "@/lib/animation/revealAnimations";
+  import { setupHoverAnimations } from "@/lib/animation/hoverAnimations";
+  import { setupSmoothScroll } from "@/lib/animation/lenis";
+  import { setupHeroParallax } from "@/lib/animation/parallax";
+  import { setupFocusHighlight } from "@/lib/animation/focusHighlight";
+
+  const setupThemeToggle = () => {
+    const button = document.querySelector("[data-theme-toggle]");
+    if (!button) return;
+
+    button.addEventListener("click", () => {
+      const root = document.documentElement;
+      const current = root.getAttribute("data-theme");
+      const next = current === "bright" ? "dark" : "bright";
+
+      if (next === "bright") {
+        root.setAttribute("data-theme", "bright");
+        localStorage.setItem("site-theme", "bright");
+      } else {
+        root.removeAttribute("data-theme");
+        localStorage.setItem("site-theme", "dark");
+      }
+    });
+  };
+
+  const init = () => {
+    setupHeroAnimations();
+    setupRevealAnimations();
+    setupHoverAnimations();
+    setupSmoothScroll();
+    setupHeroParallax();
+    setupFocusHighlight();
+    setupThemeToggle();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+</script>

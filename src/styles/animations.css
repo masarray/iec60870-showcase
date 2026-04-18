@@ -1,0 +1,17 @@
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+[data-hover-lift] {
+  will-change: transform;
+}
+
+.hero-device img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.hero-device:hover img {
+  transform: scale(1.01) translateZ(0);
+  transition: transform 0.25s ease;
+}
