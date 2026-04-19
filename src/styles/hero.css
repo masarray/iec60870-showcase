@@ -1,3 +1,57 @@
+/* ---------- Anti-CLS / anti-flicker ---------- */
+
+/* Reserve space untuk SEMUA gambar konten supaya tidak ada layout shift */
+img[width][height] {
+  height: auto;
+}
+
+.hero-visual,
+.feature-visual,
+figure.media {
+  aspect-ratio: 16 / 9; /* sesuaikan per section kalau perlu */
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  border-radius: 16px;
+  overflow: hidden;
+  contain: layout paint; /* isolasi layout dari sekitarnya */
+}
+.hero-visual img,
+.feature-visual img,
+figure.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Reveal animation: HANYA opacity (tanpa translateY) → no reflow */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+  will-change: opacity; /* hint GPU, hindari paint flash */
+}
+.reveal.is-visible {
+  opacity: 1;
+}
+
+/* Section bawah fold: skip rendering sampai dekat viewport */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+/* Hormati user yang matikan animasi */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+/* Scrollbar gutter stabil → cegah horizontal jitter saat overlay/menu buka */
+html {
+  scrollbar-gutter: stable;
+}
+
 .hero-section {
   position: relative;
   overflow: hidden;
