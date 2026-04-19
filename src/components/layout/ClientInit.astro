@@ -5,6 +5,7 @@
   import { setupSmoothScroll } from "@/lib/animation/lenis";
   import { setupHeroParallax } from "@/lib/animation/parallax";
   import { setupFocusHighlight } from "@/lib/animation/focusHighlight";
+  import { setupFeatureShowcaseAnimations } from "@/lib/animation/featureShowcase";
 
   const init = () => {
     setupHeroAnimations();
@@ -13,6 +14,7 @@
     setupSmoothScroll();
     setupHeroParallax();
     setupFocusHighlight();
+    setupFeatureShowcaseAnimations();
   };
 
   if (document.readyState === "loading") {

@@ -4,6 +4,11 @@ import { siteConfig } from "@/content/site";
 ---
 <footer class="footer">
   <div class="container">
-    <div>{siteConfig.footerText}</div>
+    <div class="footer-copy">{siteConfig.footerText}</div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href={import.meta.env.BASE_URL}>Home</a>
+      <a href={`${import.meta.env.BASE_URL}contact`}>Contact</a>
+      <a href={siteConfig.downloadUrl}>Download Free</a>
+    </nav>
   </div>
 </footer>

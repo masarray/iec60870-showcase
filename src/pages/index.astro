@@ -14,9 +14,46 @@ import SoeAuditFeatureSection from "@/components/sections/SoeAuditFeatureSection
 import CommandFeatureSection from "@/components/sections/CommandFeatureSection.astro";
 import FeaturesSummarySection from "@/components/sections/FeaturesSummarySection.astro";
 import FinalCtaSection from "@/components/sections/FinalCtaSection.astro";
+import { siteConfig } from "@/content/site";
+
+const pageTitle =
+  "IEC 60870-5-101 / 104 Protocol Analyzer | Free Engineering Tool";
+const pageDescription =
+  "Free IEC 60870-5-101 and IEC 60870-5-104 analyzer for troubleshooting communication issues, validating SOE timing, checking redundancy behavior, and tracing command execution.";
+const pageUrl = siteConfig.siteUrl;
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.siteName,
+    url: pageUrl,
+    description: pageDescription
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: siteConfig.siteName,
+    applicationCategory: "EngineeringApplication",
+    operatingSystem: "Windows",
+    description: pageDescription,
+    url: pageUrl,
+    image: `${siteConfig.siteUrl}/assets/hero/hero-main.webp`,
+    author: {
+      "@type": "Person",
+      name: siteConfig.authorName
+    },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD"
+    },
+    downloadUrl: siteConfig.downloadUrl,
+    keywords: siteConfig.keywords.join(", ")
+  }
+];
 ---
 
-<BaseLayout>
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription} structuredData={structuredData}>
   <SiteHeader />
 
   <main>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://masarray.github.io/iec60870-showcase/sitemap.xml

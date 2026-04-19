@@ -9,26 +9,28 @@ const introImageSrc = `${assetBase}assets/screenshots/dual-link-trace.png`;
 ---
 <SectionShell id="product-intro">
   <Container>
-    <div class="product-intro-grid" data-reveal>
-      <div class="product-intro-copy">
-        <SectionTitle
-          title="Built to unblock IEC communication work"
-          text="A practical analyzer for engineers who need to inspect traffic quickly, understand behavior clearly, and move from communication symptoms to actionable findings."
-        />
+    <div class="product-intro-grid" data-product-intro>
+      <div class="product-intro-copy" data-product-intro-copy>
+        <div data-product-intro-heading>
+          <SectionTitle
+            title="Built to unblock IEC communication work"
+            text="A practical analyzer for engineers who need to inspect traffic quickly, understand behavior clearly, and move from communication symptoms to actionable findings."
+          />
+        </div>
 
-        <div class="product-intro-points">
-          <div class="product-intro-point">
+        <div class="product-intro-points" data-product-intro-points>
+          <div class="product-intro-point" data-product-intro-point>
             <strong>Simple to read</strong>
             <span>See traffic, timing, and command flow without getting buried in raw frames.</span>
           </div>
-          <div class="product-intro-point">
+          <div class="product-intro-point" data-product-intro-point>
             <strong>Powerful where it matters</strong>
             <span>Handle redundancy analysis, SOE validation, and command diagnostics in one disciplined workflow.</span>
           </div>
         </div>
       </div>
 
-      <div class="product-intro-visual">
+      <div class="product-intro-visual" data-product-intro-visual>
         <DeviceFrame
           src={introImageSrc}
           alt="IEC 60870 analyzer overview"

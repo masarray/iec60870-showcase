@@ -1,8 +1,5 @@
 ---
-import Eyebrow from "@/components/ui/Eyebrow.astro";
-import SectionTitle from "@/components/ui/SectionTitle.astro";
 import DeviceFrame from "@/components/ui/DeviceFrame.astro";
-import FeatureBullets from "@/components/features/FeatureBullets.astro";
 
 export interface Props {
   id: string;
@@ -29,6 +26,7 @@ const {
 const assetBase = import.meta.env.BASE_URL;
 const resolvedImageSrc = `${assetBase}${imageSrc}`;
 const layoutClass = reverse ? "feature-row--panel" : "feature-row--split";
+const featureDirection = reverse ? "left" : "right";
 ---
 
 <section id={id} class="section feature-section">
@@ -39,16 +37,27 @@ const layoutClass = reverse ? "feature-row--panel" : "feature-row--split";
         layoutClass,
         reverse && "feature-row--reverse"
       ]}
-      data-reveal
+      data-feature-row
+      data-feature-id={id}
+      data-feature-direction={featureDirection}
     >
-      <div class="feature-copy">
-        <Eyebrow text={eyebrow} />
-        <SectionTitle title={title} text={description} />
-        <FeatureBullets items={bullets} />
+      <div class="feature-copy" data-feature-copy>
+        <div class="eyebrow" data-feature-eyebrow>{eyebrow}</div>
+
+        <div class="feature-copy-stack">
+          <h2 class="section-title" data-feature-title data-typewriter>{title}</h2>
+          <p class="section-text" data-feature-description data-typewriter>{description}</p>
+        </div>
+
+        <ul class="feature-bullets" data-feature-bullets>
+          {bullets.map((item: string) => <li>{item}</li>)}
+        </ul>
       </div>
 
-      <div class="feature-visual">
-        <DeviceFrame src={resolvedImageSrc} alt={imageAlt} />
+      <div class="feature-visual-shell" data-feature-visual-shell>
+        <div class="feature-visual" data-feature-visual>
+          <DeviceFrame src={resolvedImageSrc} alt={imageAlt} />
+        </div>
       </div>
     </div>
   </div>

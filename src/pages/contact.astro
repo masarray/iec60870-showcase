@@ -1,15 +1,49 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SiteFooter from "@/components/layout/SiteFooter.astro";
+import { siteConfig } from "@/content/site";
 
 const assetBase = import.meta.env.BASE_URL;
 const homeHref = assetBase;
-const profileSrc = `${assetBase}assets/profile-ari.webp`;
+const profileSrc = `${assetBase}assets/profile-ari.png`;
 const downloadHref =
   "https://github.com/masarray/IEC60870_101_104_ProtocolTestAnalyzer/releases";
+const pageTitle = "Contact Ari Sulistiono | IEC 60870 Engineering";
+const pageDescription =
+  "Contact Ari Sulistiono for IEC 60870 engineering, substation automation, relay integration, and practical troubleshooting work.";
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: pageTitle,
+    url: `${siteConfig.siteUrl}/contact`,
+    description: pageDescription
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Ari Sulistiono",
+    email: "mailto:admin@arisulistiono.com",
+    image: `${siteConfig.siteUrl}/assets/profile-ari.png`,
+    jobTitle: "Power and Substation Automation Expert",
+    description:
+      "Power and Substation Automation Expert with 20 years of experience in IEC communication, protection relay integration, and engineering software.",
+    url: `${siteConfig.siteUrl}/contact`,
+    knowsAbout: [
+      "IEC 60870-5-101",
+      "IEC 60870-5-104",
+      "DNP3",
+      "Modbus",
+      "IEC 61850",
+      "Substation Automation System",
+      "Protection Relay Engineering",
+      "Software Development"
+    ]
+  }
+];
 ---
 
-<BaseLayout pageTitle="Contact Ari Sulistiono" pageDescription="Contact Ari Sulistiono for IEC 60870 engineering, substation automation, and related software work.">
+<BaseLayout pageTitle={pageTitle} pageDescription={pageDescription} structuredData={structuredData}>
   <main class="contact-page">
     <section class="contact-hero">
       <div class="container contact-shell">

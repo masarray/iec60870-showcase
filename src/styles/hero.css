@@ -4,7 +4,7 @@ img[width][height] {
 
 .hero-section {
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   padding-top: 42px;
   padding-bottom: 28px;
 }
@@ -42,7 +42,7 @@ img[width][height] {
   grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
   gap: clamp(44px, 5vw, 78px);
   align-items: center;
-  min-height: 72vh;
+  min-height: 78vh;
 }
 
 .hero-copy {
@@ -110,6 +110,12 @@ img[width][height] {
   margin-top: 24px;
 }
 
+.hero-visual-shell {
+  position: relative;
+  perspective: 1800px;
+  will-change: transform;
+}
+
 .hero-visual,
 .feature-visual,
 figure.media {
@@ -125,12 +131,13 @@ figure.media {
   transform: none;
   margin-right: 0;
   will-change: transform;
+  filter: drop-shadow(0 28px 70px rgba(24, 63, 107, 0.12));
 }
 
 .hero-device {
   position: relative;
   z-index: 2;
-  width: min(100%, 860px);
+  width: min(100%, 920px);
   margin-left: auto;
   transform: translateZ(0);
   will-change: transform, opacity;
@@ -161,6 +168,11 @@ figure.media img {
   transform: translate3d(0, 0, 0);
 }
 
+.feature-copy-stack {
+  display: grid;
+  gap: 12px;
+}
+
 @media (max-width: 1100px) {
   .hero-grid {
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -176,17 +188,16 @@ figure.media img {
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    min-height: auto;
     gap: 26px;
+    min-height: auto;
   }
 
-  .hero-copy {
-    max-width: none;
+  .hero-copy-col {
+    order: 2;
   }
 
-  .hero-visual {
-    margin-right: 0;
-    transform: none;
+  .hero-visual-shell {
+    order: 1;
   }
 
   .hero-device {

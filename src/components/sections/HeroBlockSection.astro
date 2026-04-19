@@ -12,25 +12,27 @@ const heroImageSrc = `${assetBase}${heroContent.heroImage.src}`;
     <div class="hero-grid">
       <div class="hero-copy-col">
         <div class="hero-copy">
-          <div class="hero-eyebrow" data-reveal>{heroContent.eyebrow}</div>
+          <div class="hero-eyebrow" data-hero-eyebrow>
+            {heroContent.eyebrow}
+          </div>
 
-          <h1 class="hero-title" data-hero-title data-reveal>
+          <h1 class="hero-title" data-hero-title>
             {heroContent.title}
           </h1>
 
-          <p class="hero-tagline" data-hero-copy data-reveal>
+          <p class="hero-tagline" data-hero-copy>
             {heroContent.tagline}
           </p>
 
-          <p class="hero-description" data-reveal>
+          <p class="hero-description" data-hero-description>
             {heroContent.subtext}
           </p>
 
-          <div class="hero-proof" data-reveal>
-            FREE â€¢ From engineer to engineer â€¢ IEC 60870-5-101 / 104 â€¢ Timeline, SOE, Command Proof
+          <div class="hero-proof" data-hero-proof>
+            FREE • From engineer to engineer • IEC 60870-5-101 / 104 • Timeline, SOE, Command Proof
           </div>
 
-          <div class="hero-actions" data-hero-actions data-reveal>
+          <div class="hero-actions" data-hero-actions>
             <Button href={heroContent.primaryCta.href} variant="primary" pulse={true}>
               {heroContent.primaryCta.label}
             </Button>
@@ -42,16 +44,18 @@ const heroImageSrc = `${assetBase}${heroContent.heroImage.src}`;
         </div>
       </div>
 
-      <div class="hero-visual" data-hero-visual data-reveal>
-        <div class="hero-device">
-          <DeviceFrame
-            src={heroImageSrc}
-            alt={heroContent.heroImage.alt}
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
-            sizes="(max-width: 900px) 100vw, 58vw"
-          />
+      <div class="hero-visual-shell" data-hero-visual-shell>
+        <div class="hero-visual" data-hero-visual>
+          <div class="hero-device">
+            <DeviceFrame
+              src={heroImageSrc}
+              alt={heroContent.heroImage.alt}
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+              sizes="(max-width: 900px) 100vw, 58vw"
+            />
+          </div>
         </div>
       </div>
     </div>
