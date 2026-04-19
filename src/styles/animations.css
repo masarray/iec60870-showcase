@@ -1,83 +1,17 @@
-/* ============ ANTI-FLICKER REVEAL SYSTEM ============ */
-
-/* Reserve space + initial state SEBELUM JS jalan (cegah FOUC) */
 [data-reveal] {
-  opacity: 0;
-  transform: translate3d(0, 24px, 0);
-  filter: blur(8px);
-  transition: none; /* GSAP yang handle */
+  will-change: transform, opacity;
 }
 
-/* Saat JS belum siap & user no-JS → tampilkan tetap */
-.no-js [data-reveal],
-html:not(.js-ready) [data-reveal][data-reveal-critical] {
-  opacity: 1;
-  transform: none;
-  filter: none;
-}
-
-/* will-change hanya saat aktif animate (hemat GPU) */
-[data-reveal][data-animating="true"] {
-  will-change: opacity, transform, filter;
-}
-[data-reveal][data-animating="false"] {
+[data-hover-lift] {
   will-change: auto;
 }
 
-/* ============ SOFT IMAGE LOADING ============ */
-.img-soft {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    hsl(220 14% 96%) 0%,
-    hsl(220 14% 92%) 50%,
-    hsl(220 14% 96%) 100%
-  );
-  background-size: 200% 200%;
-  animation: shimmer 2.4s ease-in-out infinite;
+.hero-device img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
-.img-soft img {
-  opacity: 0;
-  transform: scale(1.04);
-  filter: blur(12px);
-  transition:
-    opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 700ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.img-soft img.is-loaded {
-  opacity: 1;
-  transform: scale(1);
-  filter: blur(0);
-}
-
-.img-soft.is-loaded {
-  animation: none;
-  background: transparent;
-}
-
-@keyframes shimmer {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-  }
-  .img-soft img {
-    transition: opacity 200ms linear;
-    transform: none;
-    filter: none;
-  }
+.hero-device:hover img {
+  transform: scale(1.004) translateZ(0);
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
 }
