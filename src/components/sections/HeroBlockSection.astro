@@ -1,6 +1,5 @@
 ---
 import { heroContent } from "@/content/hero";
-import Eyebrow from "@/components/ui/Eyebrow.astro";
 import Button from "@/components/ui/Button.astro";
 import DeviceFrame from "@/components/ui/DeviceFrame.astro";
 
@@ -11,31 +10,52 @@ const heroImageSrc = `${assetBase}${heroContent.heroImage.src}`;
 <section class="section hero-section" data-hero-root>
   <div class="container hero-container">
     <div class="hero-grid">
-      <div class="hero-copy">
-        <Eyebrow text={heroContent.eyebrow} />
+      <div class="hero-copy-col">
+        <div class="hero-copy">
+          <div class="hero-eyebrow" data-reveal>{heroContent.eyebrow}</div>
 
-        <h1 data-hero-title>{heroContent.title}</h1>
+          <h1 class="hero-title" data-hero-title data-reveal>
+            {heroContent.title}
+          </h1>
 
-        <p class="hero-tagline" data-hero-copy>
-          {heroContent.tagline}
-        </p>
+          <p class="hero-tagline" data-hero-copy data-reveal>
+            {heroContent.tagline}
+          </p>
 
-        <p class="hero-subtext">
-          {heroContent.subtext}
-        </p>
+          <p class="hero-description" data-reveal>
+            {heroContent.subtext}
+          </p>
 
-        <div class="actions-row" data-hero-actions>
-          <Button href={heroContent.primaryCta.href} variant="primary">
-            {heroContent.primaryCta.label}
-          </Button>
+          <div class="hero-meta" data-reveal>
+            <span>IEC 60870-5-101 / 104</span>
+            <span>FAT & Commissioning</span>
+            <span>Timeline & Evidence</span>
+          </div>
 
-          <Button href={heroContent.secondaryCta.href} variant="secondary">
-            {heroContent.secondaryCta.label}
-          </Button>
+          <div class="hero-actions" data-hero-actions data-reveal>
+            <Button href={heroContent.primaryCta.href} variant="primary">
+              {heroContent.primaryCta.label}
+            </Button>
+
+            <Button href={heroContent.secondaryCta.href} variant="secondary">
+              {heroContent.secondaryCta.label}
+            </Button>
+          </div>
+
+          <div class="hero-trust-strip" data-reveal>
+            <div class="trust-item">
+              <strong>Built for engineers</strong>
+              <span>Designed for FAT, troubleshooting, and field validation.</span>
+            </div>
+            <div class="trust-item">
+              <strong>Readable evidence</strong>
+              <span>SOE, command flow, redundancy behavior, and protocol visibility.</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="hero-visual" data-hero-visual>
+      <div class="hero-visual" data-hero-visual data-reveal>
         <div class="hero-glow"></div>
         <div class="hero-grid-overlay"></div>
 
@@ -48,6 +68,7 @@ const heroImageSrc = `${assetBase}${heroContent.heroImage.src}`;
             fetchpriority="high"
             sizes="(max-width: 900px) 100vw, 58vw"
           />
+        </div>
         </div>
       </div>
     </div>
