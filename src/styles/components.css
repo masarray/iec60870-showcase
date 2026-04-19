@@ -44,18 +44,18 @@
 }
 
 .site-brand__mark {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 999px;
   background: radial-gradient(
     circle at 30% 30%,
-    #7fe1ff,
+    #8fe7ff,
     #29b8ff 45%,
     #1b6fce 100%
   );
   box-shadow:
-    0 0 0 6px rgba(41, 184, 255, 0.1),
-    0 10px 24px rgba(32, 102, 182, 0.18);
+    0 0 0 8px rgba(41, 184, 255, 0.1),
+    0 14px 30px rgba(32, 102, 182, 0.22);
   flex: 0 0 auto;
 }
 
