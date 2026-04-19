@@ -1,13 +1,13 @@
 export const heroContent = {
-  eyebrow: "IEC 60870 Engineering Tool",
+  eyebrow: "IEC 60870-5-101 / 104 Analyzer",
 
-  title: "When IEC communication fails,\nyou need clarity — not guesswork.",
+  title: "A simpler way to analyze IEC 60870-5-101/104 communication.",
 
   tagline:
-    "Analyze, validate, and prove IEC 60870 behavior in real engineering conditions — from FAT to live systems.",
+    "Built for engineers who need a practical tool to trace communication issues, inspect behavior, and move faster from symptom to solution.",
 
   subtext:
-    "Understand redundancy switching, verify event timing, and trace command execution with confidence — in one unified tool.",
+    "Analyze IEC 60870-5-101 and 104 traffic, validate event flow, and find where communication gets stuck without fighting raw frames all day.",
 
   primaryCta: {
     label: "Explore capabilities",
@@ -15,8 +15,8 @@ export const heroContent = {
   },
 
   secondaryCta: {
-    label: "See how it works",
-    href: "#overview",
+    label: "See how it helps",
+    href: "#product-intro",
   },
 
   heroImage: {

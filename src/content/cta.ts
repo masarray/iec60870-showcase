@@ -3,7 +3,7 @@
   description:
     "A focused analyzer for redundancy validation, event auditing, command diagnostics, and communication troubleshooting.",
   primaryLabel: "Get in Touch",
-  primaryHref: "#contact",
+  primaryHref: "#final-cta",
   secondaryLabel: "Back to Top",
   secondaryHref: "#top"
 };

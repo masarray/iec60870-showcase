@@ -19,25 +19,10 @@
   transform: translateZ(0) scale(1.008);
 }
 
-.trust-item {
-  transition:
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 260ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.trust-item:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 22px 38px rgba(22, 60, 104, 0.11),
-    0 10px 20px rgba(22, 60, 104, 0.07);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hero-device img,
   .device-frame img,
-  .hero-float-card,
-  .trust-item {
+  .hero-float-card {
     transition: none !important;
   }
 }

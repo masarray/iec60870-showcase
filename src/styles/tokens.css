@@ -1,20 +1,23 @@
 :root {
-  --bg: #f2f7fb;
-  --bg-2: #f8fbff;
-  --bg-soft: #eef4fa;
-  --panel: #ffffff;
-  --panel-2: #f7fbff;
+  --bg: #edf3f8;
+  --bg-2: #f7fafd;
+  --bg-soft: #e7eef5;
+  --panel: rgba(255, 255, 255, 0.9);
+  --panel-2: rgba(248, 251, 255, 0.92);
 
-  --text: #102846;
-  --text-soft: #587592;
-  --text-faint: #7b93ad;
+  --text: #0d2038;
+  --text-soft: #4f6781;
+  --text-faint: #7388a1;
 
-  --brand: #29b8ff;
-  --brand-2: #1fd0c1;
+  --brand: #1174d8;
+  --brand-2: #18b7c8;
   --accent: #ff9a3d;
+  --ink-deep: #08111d;
+  --panel-dark: #0e1b2b;
+  --panel-dark-2: #132338;
 
-  --line: rgba(110, 150, 190, 0.16);
-  --line-strong: rgba(110, 150, 190, 0.24);
+  --line: rgba(92, 123, 155, 0.16);
+  --line-strong: rgba(92, 123, 155, 0.24);
 
   --container: 1200px;
 
@@ -23,6 +26,6 @@
   --radius-lg: 18px;
   --radius-xl: 28px;
 
-  --shadow-md: 0 18px 40px rgba(33, 77, 122, 0.08);
-  --shadow-lg: 0 32px 70px rgba(33, 77, 122, 0.10);
+  --shadow-md: 0 18px 40px rgba(18, 34, 57, 0.08);
+  --shadow-lg: 0 32px 70px rgba(18, 34, 57, 0.12);
 }

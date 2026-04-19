@@ -3,6 +3,7 @@
 @import "./components.css";
 @import "./animations.css";
 @import "./hero.css";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
 *,
 *::before,
@@ -16,9 +17,11 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, Segoe UI, Arial, sans-serif;
-  background: linear-gradient(180deg, #f2f7fb 0%, #f8fbff 52%, #eef4fa 100%);
-  color: #102846;
+  font-family: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(180deg, #edf3f8 0%, #f7fafd 50%, #eaf0f6 100%);
+  color: var(--text);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 img {
@@ -33,6 +36,17 @@ a {
 
 button {
   font: inherit;
+}
+
+h1,
+h2,
+h3,
+.site-brand__title,
+.hero-eyebrow,
+.eyebrow,
+.site-header__cta,
+.btn {
+  font-family: "Manrope", "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
 }
 
 main {

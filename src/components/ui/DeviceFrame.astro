@@ -38,13 +38,13 @@ const {
 <style>
 .device-frame {
   position: relative;
-  background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(245,250,255,0.92));
-  border: 1px solid rgba(104, 145, 188, 0.18);
-  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(244,248,252,0.92));
+  border: 1px solid rgba(84, 114, 145, 0.18);
+  border-radius: 28px;
   padding: 14px;
   box-shadow:
-    0 20px 50px rgba(32, 74, 121, 0.10),
-    0 8px 18px rgba(20, 53, 91, 0.08);
+    0 26px 60px rgba(18, 34, 57, 0.10),
+    0 8px 18px rgba(18, 34, 57, 0.06);
   transition:
     transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -54,19 +54,31 @@ const {
   backface-visibility: hidden;
 }
 
+.device-frame::before {
+  content: "";
+  position: absolute;
+  inset: 14px 14px auto 14px;
+  height: 28px;
+  border-radius: 14px 14px 10px 10px;
+  background: linear-gradient(180deg, rgba(15, 33, 57, 0.08), rgba(15, 33, 57, 0.02));
+  pointer-events: none;
+}
+
 .device-frame:hover {
   transform: translateY(-4px);
   box-shadow:
-    0 26px 60px rgba(32, 74, 121, 0.13),
-    0 10px 22px rgba(20, 53, 91, 0.10);
-  border-color: rgba(41, 184, 255, 0.24);
-  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,251,255,0.96));
+    0 30px 70px rgba(18, 34, 57, 0.13),
+    0 10px 22px rgba(18, 34, 57, 0.08);
+  border-color: rgba(17, 116, 216, 0.18);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,250,253,0.96));
 }
 
 .device-frame img {
   width: 100%;
   height: auto;
-  border-radius: 14px;
+  position: relative;
+  z-index: 1;
+  border-radius: 18px;
   display: block;
   object-fit: cover;
   transform: translateZ(0);
