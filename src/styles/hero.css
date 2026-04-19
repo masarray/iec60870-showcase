@@ -145,6 +145,12 @@ figure.media {
   overflow: hidden;
 }
 
+.product-intro-visual,
+.capability-highlight__visual,
+.feature-visual {
+  width: min(100%, 920px);
+}
+
 .hero-visual img,
 .feature-visual img,
 figure.media img {

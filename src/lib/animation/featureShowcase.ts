@@ -469,6 +469,31 @@ export function setupFeatureShowcaseAnimations() {
         trigger.kill();
       }
     });
+
+    if (window.matchMedia("(min-width: 901px)").matches) {
+      gsap.to(visual, {
+        scale: 0.992,
+        y: -10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: row,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.8
+        }
+      });
+
+      gsap.to(visualShell, {
+        y: -12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: row,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.8
+        }
+      });
+    }
   });
 
   const intro = document.querySelector<HTMLElement>("[data-product-intro]");
@@ -555,6 +580,20 @@ export function setupFeatureShowcaseAnimations() {
           introTrigger.kill();
         }
       });
+
+      if (window.matchMedia("(min-width: 901px)").matches) {
+        gsap.to(introVisual, {
+          scale: 0.994,
+          y: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: intro,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8
+          }
+        });
+      }
     }
   }
 
@@ -678,6 +717,20 @@ export function setupFeatureShowcaseAnimations() {
           highlightTrigger.kill();
         }
       });
+
+      if (window.matchMedia("(min-width: 901px)").matches) {
+        gsap.to(visual, {
+          scale: 0.994,
+          y: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: highlight,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8
+          }
+        });
+      }
     }
   }
 

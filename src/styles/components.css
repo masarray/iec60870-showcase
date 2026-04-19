@@ -684,6 +684,7 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
   position: relative;
   z-index: 2;
   min-width: 0;
+  margin-left: auto;
   will-change: transform, opacity, filter;
 }
 
