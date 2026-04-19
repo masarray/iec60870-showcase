@@ -1,19 +1,26 @@
 export const heroContent = {
-  eyebrow: "IEC 60870 Engineering Suite",
-  title: "IEC 60870 Tester & Analyzer",
-  tagline: "A practical analyzer for real-world IEC 60870 troubleshooting and validation",
+  eyebrow: "IEC 60870 Engineering Tool",
+
+  title: "When IEC communication fails,\nyou need clarity — not guesswork.",
+
+  tagline:
+    "Analyze, validate, and prove IEC 60870 behavior in real engineering conditions — from FAT to live systems.",
+
   subtext:
-    "Analyze redundancy behavior, event timing, communication health, and command flow in a tool designed for engineers working on live systems.",
+    "Understand redundancy switching, verify event timing, and trace command execution with confidence — in one unified tool.",
+
   primaryCta: {
-    label: "Explore Features",
-    href: "#features"
+    label: "Explore capabilities",
+    href: "#features",
   },
+
   secondaryCta: {
-    label: "View Product Story",
-    href: "#product-intro"
+    label: "See how it works",
+    href: "#overview",
   },
+
   heroImage: {
     src: "assets/hero/hero-main.webp",
-    alt: "IEC 60870 Tester and Analyzer product hero visual"
-  }
+    alt: "IEC 60870 analyzer interface",
+  },
 };

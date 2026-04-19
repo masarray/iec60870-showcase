@@ -576,3 +576,263 @@
     font-size: clamp(2.4rem, 11vw, 4rem);
   }
 }
+
+/* =========================
+   PAGE DEPTH SYSTEM
+   ========================= */
+
+:root {
+  --page-bg-top: #eef5fb;
+  --page-bg-mid: #f7fbff;
+  --page-bg-bottom: #edf4fa;
+
+  --surface-plain: rgba(255, 255, 255, 0.32);
+  --surface-soft: rgba(255, 255, 255, 0.46);
+  --surface-card: rgba(255, 255, 255, 0.82);
+
+  --divider-line: rgba(106, 147, 188, 0.12);
+  --glow-blue-soft: rgba(59, 164, 255, 0.1);
+  --glow-cyan-soft: rgba(50, 210, 220, 0.08);
+}
+
+html,
+body {
+  background:
+    radial-gradient(
+      circle at 12% 10%,
+      rgba(72, 173, 255, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 88% 24%,
+      rgba(45, 199, 220, 0.06),
+      transparent 26%
+    ),
+    linear-gradient(
+      180deg,
+      var(--page-bg-top) 0%,
+      var(--page-bg-mid) 42%,
+      var(--page-bg-bottom) 100%
+    );
+}
+
+/* Bikin stack section terasa lebih intentional */
+main {
+  position: relative;
+  isolation: isolate;
+}
+
+/* lapisan glow global lembut */
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 16%, var(--glow-blue-soft), transparent 24%),
+    radial-gradient(circle at 82% 38%, var(--glow-cyan-soft), transparent 22%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* base section behavior */
+.section {
+  position: relative;
+  z-index: 1;
+}
+
+.section > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* divider tipis antar section */
+.section + .section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: min(6vw, 72px);
+  right: min(6vw, 72px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(106, 147, 188, 0),
+    var(--divider-line),
+    rgba(106, 147, 188, 0)
+  );
+  pointer-events: none;
+}
+
+/* section yang sifatnya summary / capabilities */
+#features {
+  position: relative;
+}
+
+#features::after {
+  content: "";
+  position: absolute;
+  inset: 28px min(4vw, 40px);
+  border-radius: 34px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.42),
+    rgba(248, 252, 255, 0.28)
+  );
+  border: 1px solid rgba(109, 148, 186, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 24px 48px rgba(29, 70, 114, 0.03);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* feature detail sections jangan flat */
+.feature-section {
+  position: relative;
+}
+
+.feature-section::after {
+  content: "";
+  position: absolute;
+  inset: 18px 0;
+  background:
+    radial-gradient(
+      circle at 14% 30%,
+      rgba(63, 150, 255, 0.045),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 86% 68%,
+      rgba(59, 201, 214, 0.04),
+      transparent 18%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* alternating depth biar rhythm ada */
+.feature-section:nth-of-type(odd) {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+}
+
+.feature-section:nth-of-type(even) {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.06)
+  );
+}
+
+/* CTA terakhir harus terasa penutup */
+#contact {
+  position: relative;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: "";
+  position: absolute;
+  inset: 20px min(4vw, 40px);
+  border-radius: 30px;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(49, 149, 255, 0.12),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(29, 208, 197, 0.09),
+      transparent 24%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(245, 250, 255, 0.4));
+  border: 1px solid rgba(105, 145, 188, 0.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
+    0 28px 54px rgba(24, 63, 107, 0.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* biar semua cards lebih nyatu dengan depth baru */
+.summary-card,
+.summary-card--refined,
+.trust-item,
+.capability-highlight,
+.site-nav,
+.device-frame {
+  backdrop-filter: blur(10px);
+}
+
+#features .container,
+#contact .container {
+  position: relative;
+  z-index: 2;
+}
+
+.capabilities-shell {
+  position: relative;
+  z-index: 2;
+}
+
+.feature-row {
+  position: relative;
+  padding: 18px 0;
+  border-radius: 28px;
+}
+
+.feature-copy,
+.feature-visual {
+  position: relative;
+  z-index: 2;
+}
+
+.feature-copy {
+  max-width: 520px;
+}
+
+.feature-visual {
+  filter: drop-shadow(0 20px 36px rgba(24, 63, 107, 0.08));
+}
+
+@media (max-width: 900px) {
+  #features::after,
+  #contact::before {
+    inset: 12px 12px;
+    border-radius: 24px;
+  }
+
+  .feature-row {
+    padding: 10px 0;
+  }
+}
+
+.problem-section {
+  max-width: 720px;
+}
+
+.problem-title {
+  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  margin-bottom: 12px;
+}
+
+.problem-sub {
+  color: #5f7388;
+  margin-bottom: 28px;
+}
+
+.problem-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.problem-item {
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(120, 150, 180, 0.12);
+  font-size: 0.95rem;
+}
