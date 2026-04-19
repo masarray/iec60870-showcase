@@ -12,7 +12,7 @@ const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSr
 
 <SectionShell id="features">
   <Container>
-    <div data-reveal>
+    <div data-reveal data-capabilities-root>
       <SectionTitle
         title="Core capabilities"
         text="A focused feature set for troubleshooting, validation, event auditing, and communication diagnostics."
@@ -20,15 +20,15 @@ const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSr
 
       <div class="capabilities-shell">
         {highlight && (
-          <div class="capability-highlight" data-hover-lift>
-            <div class="capability-highlight__copy">
-              <div class="eyebrow capability-chip">{highlight.eyebrow}</div>
-              <div class="capability-kicker">Core workflow surface</div>
-              <h3 class="capability-highlight__title">{highlight.title}</h3>
-              <p class="section-text capability-highlight__text">{highlight.description}</p>
+          <div class="capability-highlight" data-hover-lift data-capability-highlight>
+            <div class="capability-highlight__copy" data-capability-copy>
+              <div class="eyebrow capability-chip" data-capability-eyebrow>{highlight.eyebrow}</div>
+              <div class="capability-kicker" data-capability-kicker>Core workflow surface</div>
+              <h3 class="capability-highlight__title" data-capability-title>{highlight.title}</h3>
+              <p class="section-text capability-highlight__text" data-capability-text>{highlight.description}</p>
             </div>
 
-            <div class="capability-highlight__visual">
+            <div class="capability-highlight__visual" data-capability-visual>
               {highlightImageSrc ? (
                 <DeviceFrame
                   src={highlightImageSrc}
@@ -46,7 +46,7 @@ const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSr
 
         <div class="summary-grid summary-grid--refined">
           {supportItems.map((item) => (
-            <div class="summary-card summary-card--refined" data-hover-lift>
+            <div class="summary-card summary-card--refined" data-hover-lift data-capability-card>
               <div class="eyebrow capability-chip">{item.eyebrow}</div>
               <h3 class="summary-card__title">{item.title}</h3>
               <p class="section-text summary-card__text">{item.description}</p>

@@ -10,6 +10,10 @@ function ensureGsap() {
   }
 }
 
+function estimateTypeDuration(source: string) {
+  return Math.min(2.1, Math.max(0.75, source.length * 0.018));
+}
+
 function typeText(element: HTMLElement, delaySeconds = 0) {
   if (element.dataset.typed === "true") return;
 
@@ -17,12 +21,13 @@ function typeText(element: HTMLElement, delaySeconds = 0) {
   element.dataset.typeSource = source;
   element.dataset.typed = "true";
   element.textContent = "";
+  const duration = estimateTypeDuration(source);
 
   gsap.to(
     { count: 0 },
     {
       count: source.length,
-      duration: Math.min(2.1, Math.max(0.75, source.length * 0.018)),
+      duration,
       delay: delaySeconds,
       ease: "none",
       roundProps: "count",
@@ -32,17 +37,78 @@ function typeText(element: HTMLElement, delaySeconds = 0) {
       }
     }
   );
+
+  return duration;
 }
 
-function typeElements(elements: HTMLElement[], startDelay = 0, stepDelay = 0.22) {
-  elements.forEach((element, index) => {
-    typeText(element, startDelay + index * stepDelay);
+function typeElementsSequentially(elements: HTMLElement[], startDelay = 0, gapDelay = 0.12) {
+  let cursor = startDelay;
+
+  elements.forEach((element) => {
+    const duration = estimateTypeDuration(element.textContent ?? "");
+
+    gsap.delayedCall(cursor, () => {
+      element.dataset.bulletState = "visible";
+      gsap.to(element, {
+        opacity: 1,
+        y: 0,
+        duration: 0.24,
+        ease: "power2.out",
+        overwrite: "auto"
+      });
+    });
+
+    typeText(element, cursor);
+    cursor += duration + gapDelay;
   });
+
+  return cursor;
 }
 
 export function setupFeatureShowcaseAnimations() {
   if (typeof window === "undefined") return;
   ensureGsap();
+
+  const credibilityBand = document.querySelector<HTMLElement>("[data-credibility-band]");
+  if (credibilityBand) {
+    const credibilityItems = credibilityBand.querySelectorAll<HTMLElement>("[data-credibility-item]");
+
+    if (credibilityItems.length) {
+      gsap.set(credibilityItems, {
+        opacity: 0,
+        y: 18,
+        scale: 0.985
+      });
+
+      ScrollTrigger.create({
+        trigger: credibilityBand,
+        start: "top 82%",
+        once: true,
+        onEnter: () => {
+          const bandTl = gsap.timeline({
+            defaults: { ease: "power3.out" }
+          });
+
+          bandTl.to(credibilityItems, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.42,
+            stagger: 0.12
+          });
+
+          credibilityItems.forEach((item, index) => {
+            gsap.delayedCall(0.18 + index * 0.22, () => {
+              item.dataset.spotlight = "on";
+              gsap.delayedCall(0.7, () => {
+                item.dataset.spotlight = "off";
+              });
+            });
+          });
+        }
+      });
+    }
+  }
 
   const rows = gsap.utils.toArray<HTMLElement>("[data-feature-row]");
   if (!rows.length) return;
@@ -75,12 +141,21 @@ export function setupFeatureShowcaseAnimations() {
 
     gsap.set(copy, { opacity: 0, y: 18 });
     gsap.set([eyebrow, ...bullets], { opacity: 0, y: 18 });
+    bullets.forEach((bullet) => {
+      bullet.dataset.bulletState = "hidden";
+    });
 
     const trigger = ScrollTrigger.create({
       trigger: row,
       start: "top 72%",
       once: true,
       onEnter: () => {
+        const titleDelay = 0.46;
+        const titleDuration = estimateTypeDuration(title.textContent ?? "");
+        const descriptionDelay = titleDelay + titleDuration + 0.12;
+        const descriptionDuration = estimateTypeDuration(description.textContent ?? "");
+        const bulletStartDelay = descriptionDelay + descriptionDuration + 0.16;
+
         const timeline = gsap.timeline({
           defaults: { ease: "power3.out" }
         });
@@ -129,21 +204,11 @@ export function setupFeatureShowcaseAnimations() {
               duration: 0.34
             },
             0.44
-          )
-          .to(
-            bullets,
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.28,
-              stagger: 0.06
-            },
-            0.92
           );
 
-        typeText(title, 0.44);
-        typeText(description, 1.02);
-        typeElements(Array.from(bullets), 1.42, 0.16);
+        typeText(title, titleDelay);
+        typeText(description, descriptionDelay);
+        typeElementsSequentially(Array.from(bullets), bulletStartDelay, 0.12);
 
         gsap.to(visual, {
           scale: 1.018,
@@ -241,6 +306,129 @@ export function setupFeatureShowcaseAnimations() {
           });
 
           introTrigger.kill();
+        }
+      });
+    }
+  }
+
+  const capabilitiesRoot = document.querySelector<HTMLElement>("[data-capabilities-root]");
+  if (capabilitiesRoot) {
+    const highlight = capabilitiesRoot.querySelector<HTMLElement>("[data-capability-highlight]");
+    const visual = capabilitiesRoot.querySelector<HTMLElement>("[data-capability-visual]");
+    const copy = capabilitiesRoot.querySelector<HTMLElement>("[data-capability-copy]");
+    const eyebrow = capabilitiesRoot.querySelector<HTMLElement>("[data-capability-eyebrow]");
+    const kicker = capabilitiesRoot.querySelector<HTMLElement>("[data-capability-kicker]");
+    const title = capabilitiesRoot.querySelector<HTMLElement>("[data-capability-title]");
+    const text = capabilitiesRoot.querySelector<HTMLElement>("[data-capability-text]");
+    const cards = capabilitiesRoot.querySelectorAll<HTMLElement>("[data-capability-card]");
+
+    if (highlight && visual && copy && eyebrow && kicker && title && text) {
+      gsap.set(highlight, {
+        transformPerspective: 1600
+      });
+      gsap.set(visual, {
+        opacity: 0,
+        scale: 1.18,
+        y: 48,
+        rotateX: 6,
+        rotateY: -10,
+        filter: "blur(10px)"
+      });
+      gsap.set(copy, { opacity: 0, x: -26, y: 12 });
+      gsap.set([eyebrow, kicker], { opacity: 0, y: 20 });
+      gsap.set(cards, {
+        opacity: 0,
+        y: 24,
+        rotateX: -8,
+        transformOrigin: "center top"
+      });
+
+      const highlightTrigger = ScrollTrigger.create({
+        trigger: highlight,
+        start: "top 70%",
+        once: true,
+        onEnter: () => {
+          const titleDelay = 0.54;
+          const titleDuration = estimateTypeDuration(title.textContent ?? "");
+          const textDelay = titleDelay + titleDuration + 0.12;
+
+          const tl = gsap.timeline({
+            defaults: { ease: "power3.out" }
+          });
+
+          tl.to(
+            visual,
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              rotateX: 0,
+              rotateY: 0,
+              filter: "blur(0px)",
+              duration: 1.22
+            },
+            0
+          )
+            .to(
+              copy,
+              {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                duration: 0.58
+              },
+              0.26
+            )
+            .to(
+              [eyebrow, kicker],
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.36,
+                stagger: 0.08
+              },
+              0.42
+            )
+            .to(
+              cards,
+              {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                duration: 0.52,
+                stagger: 0.12,
+                ease: "back.out(1.18)"
+              },
+              textDelay + 0.54
+            );
+
+          typeText(title, titleDelay);
+          typeText(text, textDelay);
+
+          gsap.fromTo(
+            visual,
+            {
+              boxShadow: "0 0 0 rgba(33, 119, 214, 0)"
+            },
+            {
+              boxShadow: "0 24px 72px rgba(33, 119, 214, 0.14)",
+              duration: 0.9,
+              yoyo: true,
+              repeat: 1,
+              delay: 0.18
+            }
+          );
+
+          gsap.to(visual, {
+            scale: 1.022,
+            duration: 2.4,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: 1,
+            delay: 1.18
+          });
+
+          highlightTrigger.kill();
         }
       });
     }
