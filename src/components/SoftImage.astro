@@ -1,0 +1,39 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  loading?: 'eager' | 'lazy';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  class?: string;
+}
+const { src, alt, width, height, loading = 'lazy', fetchpriority = 'auto', class: className = '' } = Astro.props;
+const ratio = (height / width) * 100;
+---
+<div
+  class:list={['img-soft', className]}
+  style={`aspect-ratio: ${width} / ${height};`}
+>
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding="async"
+    onload="this.classList.add('is-loaded'); this.parentElement.classList.add('is-loaded');"
+  />
+</div>
+
+<style>
+  .img-soft img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>

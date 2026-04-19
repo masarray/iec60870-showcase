@@ -3,6 +3,9 @@ import Container from "@/components/layout/Container.astro";
 import SectionShell from "@/components/layout/SectionShell.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import DeviceFrame from "@/components/ui/DeviceFrame.astro";
+
+const assetBase = import.meta.env.BASE_URL;
+const introImageSrc = `${assetBase}assets/screenshots/dual-link-trace.png`;
 ---
 <SectionShell id="product-intro">
   <Container>
@@ -16,8 +19,8 @@ import DeviceFrame from "@/components/ui/DeviceFrame.astro";
 
       <div>
         <DeviceFrame
-          src="/assets/screenshots/dual-link-analyzer.png"
-          alt="IEC 60870 dual-link analyzer overview"
+          src={introImageSrc}
+          alt="IEC 60870 analyzer overview"
         />
       </div>
     </div>
