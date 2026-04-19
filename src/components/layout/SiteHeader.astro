@@ -1,6 +1,7 @@
 ---
 import { navigationItems } from "@/data/navigation";
 import { siteConfig } from "@/content/site";
+import ThemeToggle from "@/components/ui/ThemeToggle.astro";
 
 const assetBase = import.meta.env.BASE_URL;
 const contactHref = `${assetBase}contact`;
@@ -19,12 +20,13 @@ const contactHref = `${assetBase}contact`;
     <div class="site-nav-shell" aria-label="Primary navigation">
       <nav class="site-nav">
         {navigationItems.map((item) => (
-          <a href={item.href}>{item.label}</a>
+          <a href={item.href} data-nav-target={item.href}>{item.label}</a>
         ))}
       </nav>
     </div>
 
     <div class="site-header__actions">
+      <ThemeToggle />
       <a class="site-header__cta" href={contactHref}>Contact Me</a>
     </div>
   </div>

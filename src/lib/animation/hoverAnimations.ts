@@ -3,6 +3,22 @@ import { gsap } from "./gsap";
 export function setupHoverAnimations(): void {
   if (typeof window === "undefined") return;
 
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav-target]");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      const targetId = link.dataset.navTarget;
+      if (!targetId) return;
+
+      window.setTimeout(() => {
+        document.dispatchEvent(
+          new CustomEvent("site-nav-retrigger", {
+            detail: { targetId }
+          })
+        );
+      }, 780);
+    });
+  });
+
   const cards = document.querySelectorAll<HTMLElement>("[data-hover-lift]");
   cards.forEach((card) => {
     card.addEventListener("mouseenter", () => {

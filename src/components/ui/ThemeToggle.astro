@@ -1,8 +1,47 @@
 <button
   class="theme-toggle"
   type="button"
-  aria-label="Toggle theme"
+  aria-label="Switch to night mode"
+  aria-pressed="false"
   data-theme-toggle
 >
-  Theme
+  <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"></circle>
+      <path d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2 5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+    </svg>
+  </span>
+  <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M14.9 3.4a8.5 8.5 0 1 0 5.7 14.7 7.8 7.8 0 0 1-5-14.7 7.6 7.6 0 0 0-.7 0Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+    </svg>
+  </span>
 </button>
+
+<script>
+  const root = document.documentElement;
+  const button = document.querySelector("[data-theme-toggle]");
+  const storageKey = "iec60870-theme";
+
+  const applyTheme = (theme) => {
+    root.dataset.theme = theme;
+    button?.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+    button?.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Switch to day mode" : "Switch to night mode"
+    );
+  };
+
+  const stored = window.localStorage.getItem(storageKey);
+  const initialTheme = stored === "dark" || stored === "light"
+    ? stored
+    : "light";
+
+  applyTheme(initialTheme);
+
+  button?.addEventListener("click", () => {
+    const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+    window.localStorage.setItem(storageKey, nextTheme);
+  });
+</script>

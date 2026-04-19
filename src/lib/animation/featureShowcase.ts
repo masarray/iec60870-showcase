@@ -65,9 +65,256 @@ function typeElementsSequentially(elements: HTMLElement[], startDelay = 0, gapDe
   return cursor;
 }
 
+function replayFeatureRow(row: HTMLElement) {
+  const visual = row.querySelector<HTMLElement>("[data-feature-visual]");
+  const copy = row.querySelector<HTMLElement>("[data-feature-copy]");
+  const title = row.querySelector<HTMLElement>("[data-feature-title]");
+  const description = row.querySelector<HTMLElement>("[data-feature-description]");
+  const bullets = row.querySelectorAll<HTMLElement>("[data-feature-bullets] > *");
+
+  if (!visual || !copy || !title || !description) return;
+
+  const titleSource = title.dataset.typeSource ?? title.textContent ?? "";
+  const descriptionSource = description.dataset.typeSource ?? description.textContent ?? "";
+
+  title.dataset.typed = "false";
+  title.textContent = titleSource;
+  description.dataset.typed = "false";
+  description.textContent = descriptionSource;
+
+  bullets.forEach((bullet) => {
+    const bulletSource = bullet.dataset.typeSource ?? bullet.textContent ?? "";
+    bullet.dataset.typed = "false";
+    bullet.dataset.bulletState = "hidden";
+    bullet.textContent = bulletSource;
+  });
+
+  gsap.killTweensOf([visual, copy, title, description, ...bullets]);
+
+  gsap.fromTo(
+    visual,
+    {
+      scale: 1.035,
+      y: 10,
+      filter: "blur(3px)"
+    },
+    {
+      scale: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 0.72,
+      ease: "power3.out"
+    }
+  );
+
+  gsap.fromTo(
+    copy,
+    {
+      opacity: 0.72,
+      y: 10
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.42,
+      ease: "power2.out"
+    }
+  );
+
+  const titleDelay = 0.08;
+  const titleDuration = estimateTypeDuration(titleSource);
+  const descriptionDelay = titleDelay + titleDuration + 0.1;
+  const descriptionDuration = estimateTypeDuration(descriptionSource);
+  const bulletStartDelay = descriptionDelay + descriptionDuration + 0.12;
+
+  typeText(title, titleDelay);
+  typeText(description, descriptionDelay);
+  typeElementsSequentially(Array.from(bullets), bulletStartDelay, 0.1);
+}
+
+function replayProductIntro(root: HTMLElement) {
+  const visual = root.querySelector<HTMLElement>("[data-product-intro-visual]");
+  const copy = root.querySelector<HTMLElement>("[data-product-intro-copy]");
+  const heading = root.querySelector<HTMLElement>("[data-product-intro-heading]");
+  const points = root.querySelectorAll<HTMLElement>("[data-product-intro-point]");
+
+  if (!visual || !copy || !heading) return;
+
+  gsap.killTweensOf([visual, copy, heading, ...points]);
+
+  gsap.set(visual, {
+    opacity: 0,
+    x: 44,
+    y: 12,
+    scale: 1.04,
+    rotateY: -5,
+    filter: "blur(5px)"
+  });
+  gsap.set(copy, { opacity: 0, y: 12 });
+  gsap.set([heading, ...points], { opacity: 0, y: 16 });
+
+  const tl = gsap.timeline({
+    defaults: { ease: "power3.out" }
+  });
+
+  tl.to(visual, {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    scale: 1,
+    rotateY: 0,
+    filter: "blur(0px)",
+    duration: 0.82
+  })
+    .to(
+      copy,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.42
+      },
+      0.2
+    )
+    .to(
+      heading,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.3
+      },
+      0.32
+    )
+    .to(
+      points,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.36,
+        stagger: 0.1
+      },
+      0.54
+    );
+}
+
+function replayCapabilities(root: HTMLElement) {
+  const highlight = root.querySelector<HTMLElement>("[data-capability-highlight]");
+  const visual = root.querySelector<HTMLElement>("[data-capability-visual]");
+  const copy = root.querySelector<HTMLElement>("[data-capability-copy]");
+  const eyebrow = root.querySelector<HTMLElement>("[data-capability-eyebrow]");
+  const kicker = root.querySelector<HTMLElement>("[data-capability-kicker]");
+  const title = root.querySelector<HTMLElement>("[data-capability-title]");
+  const text = root.querySelector<HTMLElement>("[data-capability-text]");
+  const cards = root.querySelectorAll<HTMLElement>("[data-capability-card]");
+
+  if (!highlight || !visual || !copy || !eyebrow || !kicker || !title || !text) return;
+
+  const titleSource = title.dataset.typeSource ?? title.textContent ?? "";
+  const textSource = text.dataset.typeSource ?? text.textContent ?? "";
+  title.dataset.typed = "false";
+  title.textContent = titleSource;
+  text.dataset.typed = "false";
+  text.textContent = textSource;
+
+  gsap.killTweensOf([highlight, visual, copy, eyebrow, kicker, title, text, ...cards]);
+
+  gsap.set(visual, {
+    opacity: 0,
+    scale: 1.08,
+    y: 26,
+    rotateX: 4,
+    rotateY: -6,
+    filter: "blur(5px)"
+  });
+  gsap.set(copy, { opacity: 0, x: -18, y: 8 });
+  gsap.set([eyebrow, kicker], { opacity: 0, y: 12 });
+  gsap.set(cards, {
+    opacity: 0,
+    y: 18,
+    rotateX: -6
+  });
+
+  const titleDelay = 0.22;
+  const titleDuration = estimateTypeDuration(titleSource);
+  const textDelay = titleDelay + titleDuration + 0.1;
+
+  const tl = gsap.timeline({
+    defaults: { ease: "power3.out" }
+  });
+
+  tl.to(visual, {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    rotateX: 0,
+    rotateY: 0,
+    filter: "blur(0px)",
+    duration: 0.9
+  })
+    .to(
+      copy,
+      {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        duration: 0.42
+      },
+      0.18
+    )
+    .to(
+      [eyebrow, kicker],
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.28,
+        stagger: 0.06
+      },
+      0.28
+    )
+    .to(
+      cards,
+      {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        duration: 0.42,
+        stagger: 0.1,
+        ease: "back.out(1.12)"
+      },
+      textDelay + 0.46
+    );
+
+  typeText(title, titleDelay);
+  typeText(text, textDelay);
+}
+
 export function setupFeatureShowcaseAnimations() {
   if (typeof window === "undefined") return;
   ensureGsap();
+
+  document.addEventListener("site-nav-retrigger", ((event: Event) => {
+    const customEvent = event as CustomEvent<{ targetId?: string }>;
+    const targetId = customEvent.detail?.targetId;
+    if (!targetId) return;
+
+    const section = document.querySelector<HTMLElement>(targetId);
+    const introRoot = section?.querySelector<HTMLElement>("[data-product-intro]");
+    if (introRoot) {
+      replayProductIntro(introRoot);
+      return;
+    }
+
+    const capabilitiesRoot = section?.querySelector<HTMLElement>("[data-capabilities-root]");
+    if (capabilitiesRoot) {
+      replayCapabilities(capabilitiesRoot);
+      return;
+    }
+
+    const featureRow = section?.querySelector<HTMLElement>("[data-feature-row]");
+    if (featureRow) {
+      replayFeatureRow(featureRow);
+      return;
+    }
+  }) as EventListener);
 
   const credibilityBand = document.querySelector<HTMLElement>("[data-credibility-band]");
   if (credibilityBand) {

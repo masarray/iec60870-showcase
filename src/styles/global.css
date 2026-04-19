@@ -24,6 +24,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+html[data-theme="dark"] body {
+  background: linear-gradient(180deg, #08121d 0%, #0c1724 48%, #0a1520 100%);
+}
+
 img {
   max-width: 100%;
   display: block;

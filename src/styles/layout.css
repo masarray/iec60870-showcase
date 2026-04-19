@@ -193,3 +193,13 @@
     width: min(100% - 24px, var(--container));
   }
 }
+
+html[data-theme="dark"] .section-shell {
+  background: linear-gradient(180deg, rgba(14, 26, 39, 0.82), rgba(11, 21, 32, 0.78));
+  border-color: rgba(129, 164, 197, 0.12);
+  box-shadow: 0 18px 40px rgba(2, 8, 14, 0.26);
+}
+
+html[data-theme="dark"] .feature-section:nth-of-type(odd) {
+  background: rgba(255, 255, 255, 0.02);
+}

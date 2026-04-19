@@ -238,3 +238,24 @@ figure.media img {
 html {
   scrollbar-gutter: stable;
 }
+
+html[data-theme="dark"] .hero-section::before {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(17, 116, 216, 0.12), transparent 30%),
+    radial-gradient(circle at 82% 36%, rgba(24, 183, 200, 0.09), transparent 24%),
+    linear-gradient(180deg, #0a1623 0%, #0d1927 52%, #0a1520 100%);
+}
+
+html[data-theme="dark"] .hero-tagline {
+  color: #c7d9ea;
+}
+
+html[data-theme="dark"] .hero-description {
+  color: #9db2c7;
+}
+
+html[data-theme="dark"] .hero-visual,
+html[data-theme="dark"] .feature-visual,
+html[data-theme="dark"] figure.media {
+  background: linear-gradient(135deg, #122132, #0e1a28);
+}

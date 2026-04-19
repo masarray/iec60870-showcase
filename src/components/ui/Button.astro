@@ -8,6 +8,7 @@ const { href = "#", variant = "primary", pulse = false } = Astro.props;
     variant === "primary" ? "btn-primary" : "btn-secondary"
   ]}
   data-pulse={pulse ? "true" : "false"}
+  data-shine={pulse ? "true" : "false"}
 >
   <slot />
 </a>

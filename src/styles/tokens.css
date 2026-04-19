@@ -29,3 +29,18 @@
   --shadow-md: 0 18px 40px rgba(18, 34, 57, 0.08);
   --shadow-lg: 0 32px 70px rgba(18, 34, 57, 0.12);
 }
+
+html[data-theme="dark"] {
+  --bg: #09131f;
+  --bg-2: #0d1927;
+  --bg-soft: #122234;
+  --panel: rgba(17, 31, 47, 0.88);
+  --panel-2: rgba(20, 36, 55, 0.9);
+  --text: #e7f0f8;
+  --text-soft: #b1c4d7;
+  --text-faint: #8ea3b8;
+  --line: rgba(132, 164, 196, 0.18);
+  --line-strong: rgba(132, 164, 196, 0.26);
+  --shadow-md: 0 18px 40px rgba(2, 8, 14, 0.34);
+  --shadow-lg: 0 32px 70px rgba(2, 8, 14, 0.42);
+}
