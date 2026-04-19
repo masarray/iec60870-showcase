@@ -2,8 +2,14 @@
 import Container from "@/components/layout/Container.astro";
 import SectionShell from "@/components/layout/SectionShell.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
+import DeviceFrame from "@/components/ui/DeviceFrame.astro";
 import { featureItems } from "@/content/features";
+
+const [highlight, ...supportItems] = featureItems;
+const assetBase = import.meta.env.BASE_URL;
+const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSrc}` : null;
 ---
+
 <SectionShell id="features">
   <Container>
     <div data-reveal>
@@ -12,14 +18,40 @@ import { featureItems } from "@/content/features";
         text="A focused feature set for troubleshooting, validation, event auditing, and communication diagnostics."
       />
 
-      <div class="summary-grid" style="margin-top: 28px;">
-        {featureItems.map((item) => (
-          <div class="summary-card" data-hover-lift>
-            <div class="eyebrow" style="margin-bottom: 14px;">{item.eyebrow}</div>
-            <h3 style="margin: 0 0 10px; font-size: 1.2rem;">{item.title}</h3>
-            <p class="section-text">{item.description}</p>
+      <div class="capabilities-shell">
+        {highlight && (
+          <div class="capability-highlight" data-hover-lift>
+            <div class="capability-highlight__copy">
+              <div class="eyebrow capability-chip">{highlight.eyebrow}</div>
+              <h3 class="capability-highlight__title">{highlight.title}</h3>
+              <p class="section-text capability-highlight__text">{highlight.description}</p>
+            </div>
+
+            <div class="capability-highlight__visual">
+              {highlightImageSrc ? (
+                <DeviceFrame
+                  src={highlightImageSrc}
+                  alt={highlight.title}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 900px) 100vw, 52vw"
+                />
+              ) : (
+                <div class="capability-highlight__placeholder" aria-hidden="true"></div>
+              )}
+            </div>
           </div>
-        ))}
+        )}
+
+        <div class="summary-grid summary-grid--refined">
+          {supportItems.map((item) => (
+            <div class="summary-card summary-card--refined" data-hover-lift>
+              <div class="eyebrow capability-chip">{item.eyebrow}</div>
+              <h3 class="summary-card__title">{item.title}</h3>
+              <p class="section-text summary-card__text">{item.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </Container>
