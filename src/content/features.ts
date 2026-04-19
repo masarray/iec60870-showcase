@@ -4,9 +4,9 @@ export const featureItems: FeatureItem[] = [
   {
     id: "timeline-analyzer",
     eyebrow: "Timeline Analysis",
-    title: "See communication over time, not just raw frames",
+    title: "See traffic flow, not just raw frames",
     description:
-      "Visualize traffic patterns, correlate bursts, and inspect communication behavior across links with a timeline-based analyzer.",
+      "Follow communication over time, correlate bursts across links, and inspect behavior in a sequence that is easier to read and troubleshoot.",
     imageSrc: "assets/screenshots/dual-link-trace.png",
     imageAlt: "IEC 60870 dual link trace timeline analyzer",
     bullets: [
@@ -18,9 +18,9 @@ export const featureItems: FeatureItem[] = [
   {
     id: "redundancy-analysis",
     eyebrow: "Redundancy Analysis",
-    title: "Understand active and standby link behavior",
+    title: "Understand active and standby behavior clearly",
     description:
-      "Monitor dual-link communication with clear visibility of active paths, standby readiness, and switchover conditions.",
+      "Inspect dual-link communication with clear visibility into active paths, standby readiness, and switchover conditions.",
     imageSrc: "assets/screenshots/dual-link-analyzer.png",
     imageAlt: "IEC 60870 dual-link redundancy analyzer",
     bullets: [
@@ -34,7 +34,7 @@ export const featureItems: FeatureItem[] = [
     eyebrow: "Availability Monitoring",
     title: "Measure communication health in real time",
     description:
-      "Track availability, reliability, and anomalies across long-running IEC 60870 sessions.",
+      "Track reliability, availability, and anomalies across long-running IEC 60870 sessions without losing operating context.",
     imageSrc: "assets/screenshots/availability-dashboard.png",
     imageAlt: "IEC 60870 availability dashboard",
     bullets: [
@@ -46,7 +46,7 @@ export const featureItems: FeatureItem[] = [
   {
     id: "soe-audit",
     eyebrow: "SOE Audit",
-    title: "Validate events with confidence",
+    title: "Validate event timing with confidence",
     description:
       "Audit sequence of events with timestamp comparison, delay analysis, and delivery context for evidence-focused investigation.",
     imageSrc: "assets/screenshots/soe-audit.png",
@@ -60,9 +60,9 @@ export const featureItems: FeatureItem[] = [
   {
     id: "command-lifecycle",
     eyebrow: "Command Verification",
-    title: "Verify command execution, not just transmission",
+    title: "Verify execution, not just transmission",
     description:
-      "Track full command lifecycle including issue, response, delay, and execution feedback.",
+      "Track the full command lifecycle from issue to response, delay, and execution feedback in one readable flow.",
     imageSrc: "assets/screenshots/command-lifecycle.png",
     imageAlt: "IEC 60870 command lifecycle monitor",
     bullets: [

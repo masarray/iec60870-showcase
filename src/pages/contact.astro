@@ -1,0 +1,418 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SiteFooter from "@/components/layout/SiteFooter.astro";
+
+const assetBase = import.meta.env.BASE_URL;
+const homeHref = assetBase;
+const profileSrc = `${assetBase}assets/profile-ari.webp`;
+const downloadHref =
+  "https://github.com/masarray/IEC60870_101_104_ProtocolTestAnalyzer/releases";
+---
+
+<BaseLayout pageTitle="Contact Ari Sulistiono" pageDescription="Contact Ari Sulistiono for IEC 60870 engineering, substation automation, and related software work.">
+  <main class="contact-page">
+    <section class="contact-hero">
+      <div class="container contact-shell">
+        <a class="contact-back" href={homeHref}>Back to home</a>
+
+        <div class="contact-card">
+          <div class="contact-profile">
+            <div class="contact-avatar-shell">
+              <img
+                class="contact-avatar"
+                src={profileSrc}
+                alt="Ari Sulistiono profile photo"
+                width="360"
+                height="360"
+              />
+            </div>
+
+            <div class="contact-identity">
+              <div class="contact-kicker">From engineer to engineer</div>
+              <h1 class="contact-title">Ari Sulistiono</h1>
+              <p class="contact-role">
+                Power and Substation Automation Expert with 20 years of experience.
+              </p>
+              <p class="contact-text">
+                Focused on practical engineering work across protection relay integration,
+                substation automation systems, IEC communication, software and web
+                development, and digital creative execution.
+              </p>
+
+              <div class="contact-skills">
+                <span>Protection Relay</span>
+                <span>Substation Automation System</span>
+                <span>Web HMI and IoT Dashboard</span>
+                <span>IEC 60870-5-104/101</span>
+                <span>DNP3 TCP/Serial</span>
+                <span>Modbus TCP/RTU</span>
+                <span>IEC 61850 MMS, GOOSE, SV</span>
+                <span>Software & Web Dev</span>
+                <span>Digital Creative</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-shell">
+            <div class="contact-form-kicker">Send a message directly</div>
+            <h2 class="contact-form-title">Tell me what you are working on</h2>
+            <p class="contact-form-text">
+              Use the form below to open a ready-to-send email. It keeps the experience simple,
+              direct, and close to the developer.
+            </p>
+
+            <form class="contact-form" id="contact-form">
+              <label class="contact-field">
+                <span>Your name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+
+              <label class="contact-field">
+                <span>Your email</span>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+
+              <label class="contact-field">
+                <span>Subject</span>
+                <input type="text" name="subject" placeholder="IEC 60870 engineering discussion" required />
+              </label>
+
+              <label class="contact-field">
+                <span>Message</span>
+                <textarea
+                  name="message"
+                  rows="6"
+                  placeholder="Describe your communication issue, engineering context, or what you want to discuss."
+                  required
+                ></textarea>
+              </label>
+
+              <div class="contact-form-actions">
+                <button class="contact-btn contact-btn--primary" type="submit">
+                  Send Message
+                </button>
+                <a class="contact-btn contact-btn--secondary" href={downloadHref}>
+                  Download Free Release
+                </a>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
+
+<script>
+  const form = document.getElementById("contact-form");
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const subject = String(formData.get("subject") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    const body = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      "",
+      message
+    ].join("\n");
+
+    window.location.href =
+      `mailto:admin@arisulistiono.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+</script>
+
+<style>
+  .contact-page {
+    min-height: 100vh;
+    overflow: clip;
+  }
+
+  .contact-hero {
+    padding: 48px 0 72px;
+  }
+
+  .contact-shell {
+    display: grid;
+    gap: 18px;
+  }
+
+  .contact-back {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(84, 114, 145, 0.12);
+    color: #425b75;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 26px;
+    align-items: stretch;
+    padding: 28px;
+    border-radius: 36px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(247, 250, 253, 0.76));
+    border: 1px solid rgba(84, 114, 145, 0.12);
+    box-shadow: 0 30px 60px rgba(18, 34, 57, 0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .contact-profile,
+  .contact-form-shell {
+    min-width: 0;
+    border-radius: 28px;
+  }
+
+  .contact-profile {
+    display: grid;
+    align-content: start;
+    gap: 22px;
+    padding: 18px;
+    background: linear-gradient(180deg, rgba(11, 24, 40, 0.96), rgba(17, 36, 58, 0.94));
+    color: #f3f7fb;
+  }
+
+  .contact-avatar-shell {
+    width: 180px;
+    aspect-ratio: 1;
+    padding: 8px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.05));
+    box-shadow: 0 24px 44px rgba(8, 17, 29, 0.22);
+  }
+
+  .contact-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    background: #eef3f7;
+  }
+
+  .contact-identity {
+    min-width: 0;
+  }
+
+  .contact-kicker,
+  .contact-form-kicker {
+    margin-bottom: 12px;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .contact-kicker {
+    color: rgba(192, 213, 231, 0.72);
+  }
+
+  .contact-title {
+    margin: 0 0 8px;
+    font-size: clamp(2.1rem, 4vw, 3.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+    color: #f3f7fb;
+  }
+
+  .contact-role {
+    margin: 0 0 14px;
+    color: rgba(217, 229, 240, 0.88);
+    font-size: 1.04rem;
+    line-height: 1.6;
+    font-weight: 650;
+    max-width: 34ch;
+  }
+
+  .contact-text {
+    margin: 0;
+    color: rgba(205, 220, 233, 0.78);
+    font-size: 0.95rem;
+    line-height: 1.76;
+    max-width: 54ch;
+  }
+
+  .contact-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .contact-skills span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 13px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #dce8f2;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .contact-form-shell {
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(84, 114, 145, 0.1);
+  }
+
+  .contact-form-kicker {
+    color: #59738d;
+  }
+
+  .contact-form-title {
+    margin: 0 0 10px;
+    font-size: clamp(1.5rem, 2.6vw, 2.3rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #0b1d31;
+  }
+
+  .contact-form-text {
+    margin: 0 0 20px;
+    color: #61768d;
+    font-size: 0.95rem;
+    line-height: 1.72;
+    max-width: 56ch;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 14px;
+  }
+
+  .contact-field {
+    display: grid;
+    gap: 7px;
+  }
+
+  .contact-field span {
+    color: #415b75;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .contact-field input,
+  .contact-field textarea {
+    width: 100%;
+    border: 1px solid rgba(84, 114, 145, 0.14);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.86);
+    color: #102641;
+    padding: 14px 16px;
+    font: inherit;
+    line-height: 1.6;
+    outline: none;
+    transition:
+      border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contact-field textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  .contact-field input:focus,
+  .contact-field textarea:focus {
+    border-color: rgba(17, 116, 216, 0.24);
+    box-shadow: 0 0 0 4px rgba(17, 116, 216, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .contact-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+  }
+
+  .contact-btn {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 0;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition:
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contact-btn:hover {
+    transform: translateY(-2px) scale(1.01);
+    filter: saturate(1.04);
+  }
+
+  .contact-btn:active {
+    transform: translateY(1px) scale(0.985);
+  }
+
+  .contact-btn--primary {
+    color: #fff;
+    background: linear-gradient(135deg, #0d2139, #15385b);
+    box-shadow: 0 16px 28px rgba(8, 17, 29, 0.22);
+  }
+
+  .contact-btn--secondary {
+    color: #163250;
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(84, 114, 145, 0.14);
+  }
+
+  .contact-note {
+    margin-top: 6px;
+    color: #71849a;
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+  .contact-note a {
+    color: #1b4d7f;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .contact-card {
+      grid-template-columns: 1fr;
+      gap: 18px;
+      padding: 18px;
+    }
+
+    .contact-avatar-shell {
+      width: 150px;
+    }
+  }
+</style>

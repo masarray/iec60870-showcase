@@ -1,6 +1,9 @@
 ---
 import { navigationItems } from "@/data/navigation";
 import { siteConfig } from "@/content/site";
+
+const assetBase = import.meta.env.BASE_URL;
+const contactHref = `${assetBase}contact`;
 ---
 
 <header class="site-header">
@@ -22,7 +25,7 @@ import { siteConfig } from "@/content/site";
     </div>
 
     <div class="site-header__actions">
-      <a class="site-header__cta" href="#final-cta">Book a walkthrough</a>
+      <a class="site-header__cta" href={contactHref}>Contact Me</a>
     </div>
   </div>
 </header>

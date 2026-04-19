@@ -1,3 +1,3 @@
 export function setupFocusHighlight() {
-  // Disabled for performance stability on hero section
+  // Intentionally disabled. Simple stable nav interactions are preferred here.
 }

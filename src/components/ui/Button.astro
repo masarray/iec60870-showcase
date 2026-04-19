@@ -1,5 +1,5 @@
-﻿---
-const { href = "#", variant = "primary" } = Astro.props;
+---
+const { href = "#", variant = "primary", pulse = false } = Astro.props;
 ---
 <a
   href={href}
@@ -7,6 +7,7 @@ const { href = "#", variant = "primary" } = Astro.props;
     "btn",
     variant === "primary" ? "btn-primary" : "btn-secondary"
   ]}
+  data-pulse={pulse ? "true" : "false"}
 >
   <slot />
 </a>

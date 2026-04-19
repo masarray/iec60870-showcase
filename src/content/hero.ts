@@ -10,13 +10,13 @@ export const heroContent = {
     "Analyze IEC 60870-5-101 and 104 traffic, validate event flow, and find where communication gets stuck without fighting raw frames all day.",
 
   primaryCta: {
-    label: "Explore capabilities",
-    href: "#features",
+    label: "Download Free",
+    href: "https://github.com/masarray/IEC60870_101_104_ProtocolTestAnalyzer/releases",
   },
 
   secondaryCta: {
-    label: "See how it helps",
-    href: "#product-intro",
+    label: "See capabilities",
+    href: "#features",
   },
 
   heroImage: {

@@ -4,6 +4,9 @@ export const siteConfig = {
     "A practical analyzer for real-world IEC 60870 troubleshooting and validation.",
   footerText:
     "Built for real-world IEC 60870 troubleshooting, validation, and engineering workflow.",
+  downloadUrl:
+    "https://github.com/masarray/IEC60870_101_104_ProtocolTestAnalyzer/releases",
+  contactUrl: "/contact",
   keywords: [
     "IEC 60870",
     "IEC 60870-5-101",

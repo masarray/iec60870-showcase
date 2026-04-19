@@ -28,11 +28,19 @@ const {
 
 const assetBase = import.meta.env.BASE_URL;
 const resolvedImageSrc = `${assetBase}${imageSrc}`;
+const layoutClass = reverse ? "feature-row--panel" : "feature-row--split";
 ---
 
 <section id={id} class="section feature-section">
   <div class="container">
-    <div class:list={["feature-row", reverse && "feature-row--reverse"]} data-reveal>
+    <div
+      class:list={[
+        "feature-row",
+        layoutClass,
+        reverse && "feature-row--reverse"
+      ]}
+      data-reveal
+    >
       <div class="feature-copy">
         <Eyebrow text={eyebrow} />
         <SectionTitle title={title} text={description} />
