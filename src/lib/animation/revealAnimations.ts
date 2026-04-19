@@ -1,16 +1,19 @@
 import { gsap } from "./gsap";
 
 function animateIn(element: Element): void {
+  element.classList.add("is-visible");
+
   gsap.fromTo(
     element,
-    { opacity: 0, y: 26 },
+    { opacity: 0, y: 8 },
     {
       opacity: 1,
       y: 0,
-      duration: 0.72,
+      duration: 0.56,
       ease: "power2.out",
-      overwrite: "auto"
-    }
+      overwrite: "auto",
+      clearProps: "transform",
+    },
   );
 }
 
@@ -34,9 +37,9 @@ export function setupRevealAnimations(): void {
       }
     },
     {
-      threshold: 0.18,
-      rootMargin: "0px 0px -8% 0px"
-    }
+      threshold: 0.12,
+      rootMargin: "0px 0px -6% 0px",
+    },
   );
 
   items.forEach((item) => observer.observe(item));

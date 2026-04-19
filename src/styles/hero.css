@@ -1,6 +1,5 @@
 /* ---------- Anti-CLS / anti-flicker ---------- */
 
-/* Reserve space untuk SEMUA gambar konten supaya tidak ada layout shift */
 img[width][height] {
   height: auto;
 }
@@ -8,12 +7,13 @@ img[width][height] {
 .hero-visual,
 .feature-visual,
 figure.media {
-  aspect-ratio: 16 / 9; /* sesuaikan per section kalau perlu */
+  aspect-ratio: 16 / 9;
   background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
   border-radius: 16px;
   overflow: hidden;
-  contain: layout paint; /* isolasi layout dari sekitarnya */
+  contain: layout paint;
 }
+
 .hero-visual img,
 .feature-visual img,
 figure.media img {
@@ -23,35 +23,23 @@ figure.media img {
   display: block;
 }
 
-/* Reveal animation: HANYA opacity (tanpa translateY) → no reflow */
-.reveal {
+/* Reveal animation: kecil, halus, tanpa loncatan besar */
+[data-reveal] {
   opacity: 0;
-  transition: opacity 0.6s ease-out;
-  will-change: opacity; /* hint GPU, hindari paint flash */
+  transform: translate3d(0, 8px, 0);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
-.reveal.is-visible {
+
+[data-reveal].is-visible {
   opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
-/* Section bawah fold: skip rendering sampai dekat viewport */
-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 800px;
-}
-
-/* Hormati user yang matikan animasi */
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1 !important;
-    transition: none !important;
-  }
-}
-
-/* Scrollbar gutter stabil → cegah horizontal jitter saat overlay/menu buka */
-html {
-  scrollbar-gutter: stable;
-}
-
+/* Jangan pakai content-visibility ke semua section.
+   Ini sering bikin section pop-in dan image terasa telat render. */
 .hero-section {
   position: relative;
   overflow: hidden;
@@ -109,8 +97,8 @@ html {
 
 .hero-visual {
   position: relative;
-  transform: scale(1.07);
-  margin-right: -48px;
+  transform: scale(1.03) translateZ(0);
+  margin-right: -32px;
   will-change: transform;
 }
 
@@ -135,7 +123,7 @@ html {
   position: relative;
   z-index: 2;
   transform: translateZ(0);
-  will-change: transform;
+  will-change: transform, opacity;
   border-radius: 26px;
   overflow: hidden;
 }
@@ -149,10 +137,22 @@ html {
 
   .hero-visual {
     margin-right: 0;
-    transform: scale(1);
+    transform: scale(1) translateZ(0);
   }
 
   .hero-section {
     padding-top: 18px;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+html {
+  scrollbar-gutter: stable;
 }

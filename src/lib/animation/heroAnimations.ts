@@ -13,28 +13,42 @@ export function setupHeroAnimations(): void {
 
   const tl = gsap.timeline({
     defaults: {
-      ease: "power2.out"
-    }
+      ease: "power2.out",
+    },
   });
 
   if (title) {
-    tl.fromTo(title, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.62 });
+    tl.fromTo(
+      title,
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.48 },
+    );
   }
 
   if (copy) {
-    tl.fromTo(copy, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.52 }, "-=0.34");
+    tl.fromTo(
+      copy,
+      { opacity: 0, y: 8 },
+      { opacity: 1, y: 0, duration: 0.42 },
+      "-=0.22",
+    );
   }
 
   if (actions) {
-    tl.fromTo(actions, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.42 }, "-=0.28");
+    tl.fromTo(
+      actions,
+      { opacity: 0, y: 6 },
+      { opacity: 1, y: 0, duration: 0.36 },
+      "-=0.18",
+    );
   }
 
   if (visual) {
     tl.fromTo(
       visual,
-      { opacity: 0, x: 18, scale: 0.992 },
-      { opacity: 1, x: 0, scale: 1, duration: 0.72 },
-      "-=0.46"
+      { opacity: 0, x: 8, scale: 0.997 },
+      { opacity: 1, x: 0, scale: 1, duration: 0.58 },
+      "-=0.28",
     );
   }
 }
