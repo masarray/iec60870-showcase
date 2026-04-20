@@ -39,9 +39,9 @@ export function setupHeroAnimations(): void {
       visual,
       {
         opacity: 0,
-        scale: 1.08,
+        scale: 1.18,
         y: 18,
-        x: 20,
+        x: 36,
         rotate: 0.45,
         transformOrigin: "center center"
       },
@@ -109,6 +109,31 @@ export function setupHeroAnimations(): void {
       { opacity: 1, y: 0, duration: 0.4 },
       "-=0.18"
     );
+  }
+
+  if (visual && visualShell && window.matchMedia("(min-width: 901px)").matches) {
+    gsap.to(visual, {
+      scale: 1,
+      y: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top top",
+        end: "bottom top+=12%",
+        scrub: 0.75
+      }
+    });
+
+    gsap.to(visualShell, {
+      y: -18,
+      ease: "none",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top top",
+        end: "bottom top+=12%",
+        scrub: 0.75
+      }
+    });
   }
 
   ScrollTrigger.refresh();

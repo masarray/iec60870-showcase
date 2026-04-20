@@ -383,6 +383,7 @@ export function setupFeatureShowcaseAnimations() {
       rotateY: fromRight ? -8 : 8,
       rotateX: 2,
       transformOrigin: "center center",
+      filter: "blur(8px)"
     });
 
     gsap.set(copy, { opacity: 0, y: 18 });
@@ -416,6 +417,7 @@ export function setupFeatureShowcaseAnimations() {
               scale: 1,
               rotateY: 0,
               rotateX: 0,
+              filter: "blur(0px)",
               duration: 1.05
             },
             0
@@ -455,11 +457,43 @@ export function setupFeatureShowcaseAnimations() {
         typeText(description, descriptionDelay);
         typeElementsSequentially(Array.from(bullets), bulletStartDelay, 0.12);
 
-
+        gsap.to(visual, {
+          scale: 1.018,
+          duration: 2.2,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: 1,
+          delay: 1.12 + index * 0.02
+        });
 
         trigger.kill();
       }
     });
+
+    if (window.matchMedia("(min-width: 901px)").matches) {
+      gsap.to(visual, {
+        scale: 0.992,
+        y: -10,
+        ease: "none",
+        scrollTrigger: {
+          trigger: row,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.8
+        }
+      });
+
+      gsap.to(visualShell, {
+        y: -12,
+        ease: "none",
+        scrollTrigger: {
+          trigger: row,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.8
+        }
+      });
+    }
   });
 
   const intro = document.querySelector<HTMLElement>("[data-product-intro]");
@@ -476,7 +510,8 @@ export function setupFeatureShowcaseAnimations() {
         y: 18,
         scale: 1.06,
         rotateY: -7,
-        });
+        filter: "blur(8px)"
+      });
 
       gsap.set(introCopy, { opacity: 0, y: 16 });
       gsap.set([introHeading, ...introPoints], { opacity: 0, y: 18 });
@@ -499,7 +534,8 @@ export function setupFeatureShowcaseAnimations() {
                 y: 0,
                 scale: 1,
                 rotateY: 0,
-                  duration: 1
+                filter: "blur(0px)",
+                duration: 1
               },
               0
             )
@@ -532,11 +568,32 @@ export function setupFeatureShowcaseAnimations() {
               0.8
             );
 
-
+          gsap.to(introVisual, {
+            scale: 1.016,
+            duration: 2,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: 1,
+            delay: 1.02
+          });
 
           introTrigger.kill();
         }
       });
+
+      if (window.matchMedia("(min-width: 901px)").matches) {
+        gsap.to(introVisual, {
+          scale: 0.994,
+          y: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: intro,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8
+          }
+        });
+      }
     }
   }
 
@@ -561,6 +618,7 @@ export function setupFeatureShowcaseAnimations() {
         y: 48,
         rotateX: 6,
         rotateY: -10,
+        filter: "blur(10px)"
       });
       gsap.set(copy, { opacity: 0, x: -26, y: 12 });
       gsap.set([eyebrow, kicker], { opacity: 0, y: 20 });
@@ -592,6 +650,7 @@ export function setupFeatureShowcaseAnimations() {
               y: 0,
               rotateX: 0,
               rotateY: 0,
+              filter: "blur(0px)",
               duration: 1.22
             },
             0
@@ -646,11 +705,32 @@ export function setupFeatureShowcaseAnimations() {
             }
           );
 
-
+          gsap.to(visual, {
+            scale: 1.022,
+            duration: 2.4,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: 1,
+            delay: 1.18
+          });
 
           highlightTrigger.kill();
         }
       });
+
+      if (window.matchMedia("(min-width: 901px)").matches) {
+        gsap.to(visual, {
+          scale: 0.994,
+          y: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: highlight,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8
+          }
+        });
+      }
     }
   }
 

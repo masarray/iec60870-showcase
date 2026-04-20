@@ -21,15 +21,6 @@ export function setupHoverAnimations(): void {
 
   const cards = document.querySelectorAll<HTMLElement>("[data-hover-lift]");
   cards.forEach((card) => {
-    if (
-      card.hasAttribute("data-capability-highlight") ||
-      card.querySelector("[data-capability-visual]") ||
-      card.querySelector("[data-feature-visual]") ||
-      card.querySelector("[data-hero-visual]")
-    ) {
-      return;
-    }
-
     card.addEventListener("mouseenter", () => {
       gsap.to(card, {
         y: -5,

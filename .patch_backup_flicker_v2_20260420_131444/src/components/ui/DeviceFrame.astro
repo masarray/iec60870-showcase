@@ -53,6 +53,7 @@ const {
     inset 0 -24px 36px rgba(146, 173, 198, 0.14);
   backdrop-filter: blur(16px) saturate(1.08);
   transition:
+    transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
     background 240ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -114,7 +115,7 @@ const {
 }
 
 .device-frame:hover {
-  transform: translateZ(0);
+  transform: translateY(-4px) scale(1.003);
   box-shadow:
     0 40px 78px rgba(14, 31, 49, 0.16),
     0 12px 22px rgba(14, 31, 49, 0.08),

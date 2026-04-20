@@ -1,0 +1,17 @@
+---
+import FeatureSection from "@/components/features/FeatureSection.astro";
+import { featureItems } from "@/content/features";
+
+const item = featureItems.find((x) => x.id === "timeline-analyzer");
+if (!item) throw new Error("Missing feature: timeline-analyzer");
+---
+
+<FeatureSection
+  id={item.id}
+  eyebrow={item.eyebrow}
+  title={item.title}
+  description={item.description}
+  imageSrc={item.imageSrc}
+  imageAlt={item.imageAlt}
+  bullets={item.bullets}
+/>
