@@ -7,13 +7,13 @@ export const featureItems: FeatureItem[] = [
     title: "See traffic flow, not just raw frames",
     description:
       "Follow communication over time, correlate bursts across links, and inspect behavior in a sequence that is easier to read and troubleshoot.",
-    imageSrc: "assets/screenshots/dual-link-trace.png",
+    imageSrc: "assets/screenshots/NUC_Dual_Link_Trace.gif",
     imageAlt: "IEC 60870 dual link trace timeline analyzer",
     bullets: [
       "Timeline-based traffic inspection",
       "Burst correlation across links",
-      "Readable event-to-frame context"
-    ]
+      "Readable event-to-frame context",
+    ],
   },
   {
     id: "redundancy-analysis",
@@ -26,8 +26,8 @@ export const featureItems: FeatureItem[] = [
     bullets: [
       "Single-link and dual-link mode",
       "Link state awareness",
-      "Switchover visibility"
-    ]
+      "Switchover visibility",
+    ],
   },
   {
     id: "availability-dashboard",
@@ -37,11 +37,7 @@ export const featureItems: FeatureItem[] = [
       "Track reliability, availability, and anomalies across long-running IEC 60870 sessions without losing operating context.",
     imageSrc: "assets/screenshots/availability-dashboard.png",
     imageAlt: "IEC 60870 availability dashboard",
-    bullets: [
-      "Reliability score",
-      "Availability metrics",
-      "Findings overview"
-    ]
+    bullets: ["Reliability score", "Availability metrics", "Findings overview"],
   },
   {
     id: "soe-audit",
@@ -54,8 +50,8 @@ export const featureItems: FeatureItem[] = [
     bullets: [
       "Timestamp comparison",
       "Delay and context review",
-      "Evidence-oriented analysis"
-    ]
+      "Evidence-oriented analysis",
+    ],
   },
   {
     id: "command-lifecycle",
@@ -63,12 +59,12 @@ export const featureItems: FeatureItem[] = [
     title: "Verify execution, not just transmission",
     description:
       "Track the full command lifecycle from issue to response, delay, and execution feedback in one readable flow.",
-    imageSrc: "assets/screenshots/command-lifecycle.png",
+    imageSrc: "assets/screenshots/IEC_SingleLinkConnect.gif",
     imageAlt: "IEC 60870 command lifecycle monitor",
     bullets: [
       "Command feedback visibility",
       "Response timing insight",
-      "Execution tracking"
-    ]
-  }
+      "Execution tracking",
+    ],
+  },
 ];
