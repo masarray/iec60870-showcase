@@ -1,9 +1,8 @@
----
+﻿---
 import Container from "@/components/layout/Container.astro";
 import SectionShell from "@/components/layout/SectionShell.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import DeviceFrame from "@/components/ui/DeviceFrame.astro";
-import VisualPreviewTrigger from "@/components/ui/VisualPreviewTrigger.astro";
 import { featureItems } from "@/content/features";
 
 const [highlight, ...supportItems] = featureItems;
@@ -31,23 +30,13 @@ const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSr
 
             <div class="capability-highlight__visual" data-capability-visual>
               {highlightImageSrc ? (
-                <>
-                  <DeviceFrame
-                    src={highlightImageSrc}
-                    alt={highlight.title}
-                    loading="lazy"
-                    decoding="async"
-                    sizes="(max-width: 900px) 100vw, 52vw"
-                  />
-
-                  <div class="capability-highlight__preview">
-                    <VisualPreviewTrigger
-                      src={highlightImageSrc}
-                      alt={highlight.title}
-                      label="Preview"
-                    />
-                  </div>
-                </>
+                <DeviceFrame
+                  src={highlightImageSrc}
+                  alt={highlight.title}
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 900px) 100vw, 52vw"
+                />
               ) : (
                 <div class="capability-highlight__placeholder" aria-hidden="true"></div>
               )}
@@ -69,24 +58,3 @@ const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSr
     </div>
   </Container>
 </SectionShell>
-
-<style>
-  .capability-highlight__visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .capability-highlight__preview {
-    width: 100%;
-    margin-top: 16px;
-    display: flex;
-    justify-content: center;
-  }
-
-  @media (max-width: 900px) {
-    .capability-highlight__preview {
-      margin-top: 12px;
-    }
-  }
-</style>

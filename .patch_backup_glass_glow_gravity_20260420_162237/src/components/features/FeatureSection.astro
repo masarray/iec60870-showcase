@@ -1,6 +1,6 @@
 ---
 import DeviceFrame from "@/components/ui/DeviceFrame.astro";
-import VisualPreviewTrigger from "@/components/ui/VisualPreviewTrigger.astro";
+import ImagePreviewModal from "@/components/ui/ImagePreviewModal.astro";
 
 export interface Props {
   id: string;
@@ -61,10 +61,10 @@ const featureDirection = reverse ? "left" : "right";
         </div>
 
         <div class="feature-preview-action">
-          <VisualPreviewTrigger
+          <ImagePreviewModal
             src={resolvedImageSrc}
             alt={imageAlt}
-            label="Preview"
+            label="Open full preview"
           />
         </div>
       </div>
@@ -80,10 +80,10 @@ const featureDirection = reverse ? "left" : "right";
   }
 
   .feature-preview-action {
-    width: 100%;
-    margin-top: 16px;
+    margin-top: 14px;
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 
   @media (max-width: 900px) {

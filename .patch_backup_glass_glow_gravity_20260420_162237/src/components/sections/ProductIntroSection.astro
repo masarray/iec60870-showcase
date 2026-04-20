@@ -1,12 +1,11 @@
----
+﻿---
 import Container from "@/components/layout/Container.astro";
 import SectionShell from "@/components/layout/SectionShell.astro";
 import SectionTitle from "@/components/ui/SectionTitle.astro";
 import DeviceFrame from "@/components/ui/DeviceFrame.astro";
-import VisualPreviewTrigger from "@/components/ui/VisualPreviewTrigger.astro";
 
 const assetBase = import.meta.env.BASE_URL;
-const introImageSrc = `${assetBase}assets/screenshots/dual-link-trace.png`;
+const introImageSrc = `${assetBase}assets/screenshots/NUC_Dual_Link_Connect.gif`;
 ---
 <SectionShell id="product-intro">
   <Container>
@@ -36,36 +35,7 @@ const introImageSrc = `${assetBase}assets/screenshots/dual-link-trace.png`;
           src={introImageSrc}
           alt="IEC 60870 analyzer overview"
         />
-
-        <div class="product-intro-preview">
-          <VisualPreviewTrigger
-            src={introImageSrc}
-            alt="IEC 60870 analyzer overview"
-            label="Preview"
-          />
-        </div>
       </div>
     </div>
   </Container>
 </SectionShell>
-
-<style>
-  .product-intro-visual {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .product-intro-preview {
-    width: 100%;
-    margin-top: 16px;
-    display: flex;
-    justify-content: center;
-  }
-
-  @media (max-width: 900px) {
-    .product-intro-preview {
-      margin-top: 12px;
-    }
-  }
-</style>
