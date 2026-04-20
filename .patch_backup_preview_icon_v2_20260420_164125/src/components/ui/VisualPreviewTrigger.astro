@@ -8,7 +8,7 @@ interface Props {
 const {
   src,
   alt = "",
-  label = "Open preview"
+  label = "Preview"
 } = Astro.props;
 
 const modalId = `preview-${Math.random().toString(36).slice(2, 10)}`;
@@ -21,22 +21,10 @@ const modalId = `preview-${Math.random().toString(36).slice(2, 10)}`;
     data-ggg-open
     aria-label={label}
     aria-controls={modalId}
-    title={label}
   >
-    <span class="ggg-preview__glass" aria-hidden="true"></span>
-    <svg
-      class="ggg-preview__icon"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.9"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      aria-hidden="true"
-    >
-      <circle cx="11" cy="11" r="6.5"></circle>
-      <path d="M16 16l4.25 4.25"></path>
-    </svg>
+    <span class="ggg-preview__orb" aria-hidden="true"></span>
+    <span class="ggg-preview__label">{label}</span>
+    <span class="ggg-preview__icon" aria-hidden="true">↗</span>
   </button>
 
   <div
@@ -56,28 +44,14 @@ const modalId = `preview-${Math.random().toString(36).slice(2, 10)}`;
       <div class="ggg-lightbox__glow ggg-lightbox__glow--one" aria-hidden="true"></div>
       <div class="ggg-lightbox__glow ggg-lightbox__glow--two" aria-hidden="true"></div>
 
-<button
-  type="button"
-  class="ggg-lightbox__close"
-  data-ggg-close
-  aria-label="Close preview"
->
-  <svg
-    class="ggg-lightbox__close-icon"
-    viewBox="0 0 24 24"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <path
-      d="M6.75 6.75L17.25 17.25M17.25 6.75L6.75 17.25"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2.2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-  </svg>
-</button>
+      <button
+        type="button"
+        class="ggg-lightbox__close"
+        data-ggg-close
+        aria-label="Close preview"
+      >
+        ×
+      </button>
 
       <figure class="ggg-lightbox__figure">
         <img
@@ -94,32 +68,32 @@ const modalId = `preview-${Math.random().toString(36).slice(2, 10)}`;
 
 <style>
   .ggg-preview {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 7;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    pointer-events: auto;
   }
 
   .ggg-preview__trigger {
     position: relative;
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 38px;
+    padding: 0 14px;
     border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     background:
-      linear-gradient(180deg, rgba(16, 29, 46, 0.68), rgba(8, 18, 31, 0.62));
-    color: rgba(240, 248, 255, 0.95);
+      linear-gradient(180deg, rgba(18, 31, 48, 0.62), rgba(8, 18, 31, 0.58));
+    color: rgba(237, 246, 255, 0.94);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
     cursor: pointer;
-    backdrop-filter: blur(14px) saturate(120%);
+    backdrop-filter: blur(12px);
     box-shadow:
-      0 14px 28px rgba(2, 10, 22, 0.24),
-      inset 0 1px 0 rgba(255, 255, 255, 0.10),
-      0 0 0 1px rgba(90, 180, 255, 0.02);
+      0 12px 28px rgba(2, 10, 22, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(103, 196, 255, 0.02);
     transition:
       transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
       border-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -131,43 +105,35 @@ const modalId = `preview-${Math.random().toString(36).slice(2, 10)}`;
     transform: translateY(-1px);
     border-color: rgba(144, 215, 255, 0.28);
     background:
-      linear-gradient(180deg, rgba(22, 38, 58, 0.76), rgba(10, 22, 38, 0.70));
+      linear-gradient(180deg, rgba(22, 38, 58, 0.72), rgba(10, 22, 38, 0.68));
     box-shadow:
-      0 18px 34px rgba(2, 10, 22, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.14),
-      0 0 28px rgba(50, 150, 255, 0.16);
+      0 16px 34px rgba(2, 10, 22, 0.26),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 0 24px rgba(50, 150, 255, 0.14);
   }
 
   .ggg-preview__trigger:active {
     transform: translateY(0);
   }
 
-  .ggg-preview__glass {
-    position: absolute;
-    inset: 1px;
+  .ggg-preview__orb {
+    width: 8px;
+    height: 8px;
     border-radius: 999px;
-    background:
-      radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.16), transparent 36%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
-    pointer-events: none;
+    background: radial-gradient(circle at 35% 35%, #d7f8ff, #65d8ff 58%, #3ea4ff 100%);
+    box-shadow:
+      0 0 0 6px rgba(74, 190, 255, 0.08),
+      0 0 18px rgba(74, 190, 255, 0.28);
+    flex: 0 0 auto;
+  }
+
+  .ggg-preview__label {
+    white-space: nowrap;
   }
 
   .ggg-preview__icon {
-    position: relative;
-    z-index: 1;
-    width: 18px;
-    height: 18px;
-    margin: auto;
-    display: block;
-    filter: drop-shadow(0 0 10px rgba(90, 190, 255, 0.12));
-    transition:
-      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
-      filter 220ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .ggg-preview__trigger:hover .ggg-preview__icon {
-    transform: scale(1.04);
-    filter: drop-shadow(0 0 14px rgba(110, 205, 255, 0.18));
+    font-size: 0.82rem;
+    opacity: 0.88;
   }
 
   .ggg-lightbox[hidden] {
@@ -272,39 +238,30 @@ const modalId = `preview-${Math.random().toString(36).slice(2, 10)}`;
       inset 0 1px 0 rgba(255, 255, 255, 0.10);
   }
 
-.ggg-lightbox__close {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  z-index: 3;
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(235, 243, 252, 0.84));
-  color: #102742;
-  cursor: pointer;
-  backdrop-filter: blur(14px);
-  box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.22),
-    0 0 24px rgba(120, 210, 255, 0.10);
-  transition:
-    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.ggg-lightbox__close-icon {
-  width: 23px;
-  height: 23px;
-  display: block;
-  color: currentColor;
-  transform: translate(0.25px, 0.25px);
-}
+  .ggg-lightbox__close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(235, 243, 252, 0.84));
+    color: #102742;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    backdrop-filter: blur(14px);
+    box-shadow:
+      0 14px 30px rgba(0, 0, 0, 0.22),
+      0 0 24px rgba(120, 210, 255, 0.10);
+    transition:
+      transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 200ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
   .ggg-lightbox__close:hover {
     transform: translateY(-1px);
@@ -315,21 +272,6 @@ const modalId = `preview-${Math.random().toString(36).slice(2, 10)}`;
   }
 
   @media (max-width: 900px) {
-    .ggg-preview {
-      top: 10px;
-      right: 10px;
-    }
-
-    .ggg-preview__trigger {
-      width: 38px;
-      height: 38px;
-    }
-
-    .ggg-preview__icon {
-      width: 16px;
-      height: 16px;
-    }
-
     .ggg-lightbox__stage {
       padding: 14px;
     }
@@ -344,21 +286,21 @@ const modalId = `preview-${Math.random().toString(36).slice(2, 10)}`;
       border-radius: 16px;
     }
 
-.ggg-lightbox__close {
-  top: 10px;
-  right: 10px;
-  width: 42px;
-  height: 42px;
-}
-.ggg-lightbox__close-icon {
-  width: 16px;
-  height: 16px;
-}
+    .ggg-lightbox__close {
+      top: 10px;
+      right: 10px;
+      width: 42px;
+      height: 42px;
+    }
+
+    .ggg-preview__trigger {
+      min-height: 36px;
+      padding: 0 13px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .ggg-preview__trigger,
-    .ggg-preview__icon,
     .ggg-lightbox__image,
     .ggg-lightbox__close {
       transition: none !important;

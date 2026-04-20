@@ -29,7 +29,7 @@ const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSr
               <p class="section-text capability-highlight__text" data-capability-text>{highlight.description}</p>
             </div>
 
-            <div class="capability-highlight__visual capability-highlight__visual--previewable" data-capability-visual>
+            <div class="capability-highlight__visual" data-capability-visual>
               {highlightImageSrc ? (
                 <>
                   <DeviceFrame
@@ -40,11 +40,13 @@ const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSr
                     sizes="(max-width: 900px) 100vw, 52vw"
                   />
 
-                  <VisualPreviewTrigger
-                    src={highlightImageSrc}
-                    alt={highlight.title}
-                    label="Open preview"
-                  />
+                  <div class="capability-highlight__preview">
+                    <VisualPreviewTrigger
+                      src={highlightImageSrc}
+                      alt={highlight.title}
+                      label="Preview"
+                    />
+                  </div>
                 </>
               ) : (
                 <div class="capability-highlight__placeholder" aria-hidden="true"></div>
@@ -69,8 +71,22 @@ const highlightImageSrc = highlight?.imageSrc ? `${assetBase}${highlight.imageSr
 </SectionShell>
 
 <style>
-  .capability-highlight__visual--previewable {
-    position: relative;
+  .capability-highlight__visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .capability-highlight__preview {
     width: 100%;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .capability-highlight__preview {
+      margin-top: 12px;
+    }
   }
 </style>

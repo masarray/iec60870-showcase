@@ -31,25 +31,41 @@ const introImageSrc = `${assetBase}assets/screenshots/dual-link-trace.png`;
         </div>
       </div>
 
-      <div class="product-intro-visual product-intro-visual--previewable" data-product-intro-visual>
+      <div class="product-intro-visual" data-product-intro-visual>
         <DeviceFrame
           src={introImageSrc}
           alt="IEC 60870 analyzer overview"
         />
 
-        <VisualPreviewTrigger
-          src={introImageSrc}
-          alt="IEC 60870 analyzer overview"
-          label="Open preview"
-        />
+        <div class="product-intro-preview">
+          <VisualPreviewTrigger
+            src={introImageSrc}
+            alt="IEC 60870 analyzer overview"
+            label="Preview"
+          />
+        </div>
       </div>
     </div>
   </Container>
 </SectionShell>
 
 <style>
-  .product-intro-visual--previewable {
-    position: relative;
+  .product-intro-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-intro-preview {
     width: 100%;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .product-intro-preview {
+      margin-top: 12px;
+    }
   }
 </style>
